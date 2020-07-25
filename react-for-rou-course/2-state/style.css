@@ -1,0 +1,11 @@
+body {
+    border: 1px solid #bdc3c7;
+    padding: 1rem;
+  }
+  .title {
+    color: #2c3e50;
+  }
+  .footer {
+    background: #bdc3c7;
+    padding: 5px;
+  }
