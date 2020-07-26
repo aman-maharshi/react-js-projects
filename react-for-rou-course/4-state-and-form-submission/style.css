@@ -1,0 +1,28 @@
+body {
+  border: 1px solid #bdc3c7;
+  padding: 1rem;
+}
+.title {
+  color: #2c3e50;
+}
+.footer {
+  background: #bdc3c7;
+  padding: 5px;
+}
+.like {
+  color: #16a085;
+}
+.buttons-div button {
+  margin-right: 10px;
+  padding: 3px 10px;
+}
+
+form {
+  margin-top: 10px;
+}
+form input {
+  margin-right: 7px;
+}
+fieldset {
+  border-color: #dfe6e9;
+}
