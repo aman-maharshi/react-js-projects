@@ -1,7 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Varta:wght@400;600&display=swap');
 body {
   margin: 0;
+  font-family: 'Varta', sans-serif;
 }
-h1 {
-  text-align: center;
-  
+.app {
+  padding: 1rem;
+  box-shadow: 1px 1px 3px gray;
+  margin: 1rem;
+}
+.title {
+  color: #16a085;
+}
+.time {
+  color: gray;
+  margin-left: 5px;
 }
