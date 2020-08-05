@@ -1,11 +1,17 @@
 import React from 'react';
 import './App.css';
+import Pet from './Components/Pet'
 
 function App() {
   return (
     <div className="app">
       <Header />
       <TimeArea />
+      <ul>
+        <Pet name="Lina" species="cat" age="3"/>
+        <Pet name="Luna" species="cat" age="2"/>
+        <Pet name="Medusa" species="cat" age="5"/>
+      </ul>
       <Footer />
     </div>
   );
