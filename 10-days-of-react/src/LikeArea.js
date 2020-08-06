@@ -4,7 +4,7 @@ import './App.css';
 const useState = React.useState;
 
 function LikeArea() {
-    const [likeCount, setLikeCount] = useState(0)
+    const [likeCount, setLikeCount] = useState(3)
     function incLike() {
       setLikeCount(function(prev) {
         return prev + 1;

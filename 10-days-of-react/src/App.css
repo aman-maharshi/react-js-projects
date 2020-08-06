@@ -15,3 +15,15 @@ body {
   color: gray;
   margin-left: 5px;
 }
+fieldset {
+  border: 1px solid lightgray;
+  display: flex;
+  max-width: 400px;
+}
+fieldset input {
+  width: 95%;
+  border: 1px solid gray;
+  margin-bottom: 1rem;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
