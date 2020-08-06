@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import LikeArea from './LikeArea';
 
 const useState = React.useState;
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className="app">
       <Header />
+      <LikeArea />
       <TimeArea />
       <ul>
         {pets.map(function(pet) {
