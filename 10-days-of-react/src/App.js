@@ -19,6 +19,7 @@ function App() {
       <Header />
       <LikeArea />
       <TimeArea />
+      // passing the setPets state function from App component to AddPetForm component
       <AddPetForm setPets={setPets}/>
       <ul>
         {pets.map(function(pet) {
