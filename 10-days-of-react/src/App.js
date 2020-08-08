@@ -4,9 +4,22 @@ import LikeArea from './LikeArea';
 import AddPetForm from './AddPetForm';
 
 const useState = React.useState;
+const useEffect = React.useEffect;
 
 function App() {
   const [pets, setPets] = useState([])
+
+  // only run once - the first time this component is rendered
+  useEffect(() => {
+    if(localStorage.getItem("petData")) {
+      setPets(JSON.parse(localStorage.getItem("petData")))
+    }
+  }, [])
+
+  // run everytime our pet state changes
+  useEffect(() => {
+    localStorage.setItem("petData", JSON.stringify(pets))
+  }, [pets])
 
   return (
     <div className="app">
@@ -41,9 +54,10 @@ function Header() {
 
 function TimeArea() {
   const [theTime, setTheTime] = useState(new Date().toLocaleString());
-  setTimeout(function() {
-    setTheTime(new Date().toLocaleString());
-  }, 1000);
+  useEffect(() => {
+    const interval = setInterval(() => setTheTime(new Date().toLocaleString()), 1000)
+    return () => clearInterval(interval)
+  }, [])
   return (
     <p>Time: <span className="time">{theTime}</span></p>
   );
