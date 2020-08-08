@@ -6,24 +6,17 @@ import AddPetForm from './AddPetForm';
 const useState = React.useState;
 
 function App() {
-  const [pets, setPets] = useState([
-    { name: "Meowsalot", species: "cat", age: "5", id: 123456789 },
-    { name: "Barksalot", species: "dog", age: "3", id: 987654321 },
-    { name: "Fluffy", species: "rabbit", age: "2", id: 123123123 },
-    { name: "Purrsloud", species: "cat", age: "1", id: 456456456 },
-    { name: "Paws", species: "dog", age: "6", id: 789789789 }
-  ])
+  const [pets, setPets] = useState([])
 
   return (
     <div className="app">
       <Header />
       <LikeArea />
       <TimeArea />
-      // passing the setPets state function from App component to AddPetForm component
       <AddPetForm setPets={setPets}/>
       <ul>
         {pets.map(function(pet) {
-          return (<Pet name={pet.name} species={pet.species} age={pet.age} key={pet.id}/>)
+          return (<Pet setPets={setPets} id={pet.id} name={pet.name} species={pet.species} age={pet.age} key={pet.id}/>)
         })}
       </ul>
       <Footer />
@@ -32,8 +25,11 @@ function App() {
 }
 
 function Pet(props) {
+  function handleDelete() {
+    props.setPets(prev => prev.filter(pet => pet.id != props.id))
+  }
   return(
-      <li>{props.name} is a {props.species} and is {props.age} years old</li>
+      <li>{props.name} is a {props.species} and is {props.age} years old <button onClick={handleDelete}>Delete</button></li>
   );
 }
 

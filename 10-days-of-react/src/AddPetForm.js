@@ -19,9 +19,9 @@ function AddPetForm(props) {
       <form onSubmit={handleSubmit}>
         <fieldset>
           <legend>Add New Pet</legend>
-          <input onChange={ e => {setName(e.target.value)}} placeholder="Name" />
-          <input onChange={ e => {setSpecies(e.target.value)}} placeholder="Species" />
-          <input onChange={ e => {setAge(e.target.value)}} placeholder="Age" type="number" />
+          <input value={name} onChange={ e => {setName(e.target.value)}} placeholder="Name" />
+          <input value={species} onChange={ e => {setSpecies(e.target.value)}} placeholder="Species" />
+          <input value={age} onChange={ e => {setAge(e.target.value)}} placeholder="Age" type="number" />
           <button>Add Pet</button>
         </fieldset>
       </form>
