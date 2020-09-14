@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-js-hands-on/todo-simple/static/css/main.05c04535.chunk.css",
+    "main.js": "/react-js-hands-on/todo-simple/static/js/main.3010c5d3.chunk.js",
+    "main.js.map": "/react-js-hands-on/todo-simple/static/js/main.3010c5d3.chunk.js.map",
+    "runtime-main.js": "/react-js-hands-on/todo-simple/static/js/runtime-main.0900e161.js",
+    "runtime-main.js.map": "/react-js-hands-on/todo-simple/static/js/runtime-main.0900e161.js.map",
+    "static/js/2.9352cc44.chunk.js": "/react-js-hands-on/todo-simple/static/js/2.9352cc44.chunk.js",
+    "static/js/2.9352cc44.chunk.js.map": "/react-js-hands-on/todo-simple/static/js/2.9352cc44.chunk.js.map",
+    "index.html": "/react-js-hands-on/todo-simple/index.html",
+    "precache-manifest.9d0fccb46c2088834344d850bf71fdaa.js": "/react-js-hands-on/todo-simple/precache-manifest.9d0fccb46c2088834344d850bf71fdaa.js",
+    "service-worker.js": "/react-js-hands-on/todo-simple/service-worker.js",
+    "static/css/main.05c04535.chunk.css.map": "/react-js-hands-on/todo-simple/static/css/main.05c04535.chunk.css.map",
+    "static/js/2.9352cc44.chunk.js.LICENSE.txt": "/react-js-hands-on/todo-simple/static/js/2.9352cc44.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0900e161.js",
+    "static/js/2.9352cc44.chunk.js",
+    "static/css/main.05c04535.chunk.css",
+    "static/js/main.3010c5d3.chunk.js"
+  ]
+}
