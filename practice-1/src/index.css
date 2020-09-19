@@ -14,3 +14,20 @@ body {
     display: flex;
     justify-content: space-between;
 }
+.like {
+    color: gray;
+    background: rgb(196, 240, 255);
+    padding: 10px 0;
+    border-bottom: 2px solid rgb(170, 170, 170);
+    margin-bottom: 1rem;
+}
+.like span {
+    display: inline-block;
+    margin: 0 1rem;
+}
+.like button {
+    color: rgb(54, 54, 54);
+}
+.input-form input:first-child {
+    margin-right: 1rem;
+}

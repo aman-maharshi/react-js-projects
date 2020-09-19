@@ -1,12 +1,32 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
+import LikeArea from "./LikeArea"
+import DateTime from "./DateTime"
 
 function App() {
-    const [time, setTime] = useState(new Date().toLocaleTimeString())
-    const [date] = useState(new Date().toLocaleDateString())
-    const [items] = useState(["Go to Gym", "Play Tennis", "Study"])
+    const [items, setItems] = useState(["Go to Gym", "Play Tennis", "Study"])
+    const inputValue = useRef()
 
-    function Header() {
-        return <h1>React Practice App #1</h1>
+    useEffect(() => {
+        inputValue.current.focus()
+    }, [])
+
+    function UserInput() {
+        function handleSubmit(e) {
+            e.preventDefault()
+            let val = inputValue.current.value
+            if (val !== "") {
+                setItems(prev => prev.concat(val))
+                console.log(items.length)
+            }
+            inputValue.current.value = ""
+        }
+
+        return (
+            <form onSubmit={handleSubmit} className="input-form">
+                <input type="text" ref={inputValue} />
+                <input type="submit" value="Add" />
+            </form>
+        )
     }
 
     function List() {
@@ -19,25 +39,12 @@ function App() {
         )
     }
 
-    function SectionDateTime() {
-        /*
-        setTimeout(() => {
-            setTime(new Date().toLocaleTimeString())
-        }, 1000)
-        */
-
-        return (
-            <div className="date-time">
-                <p>Date: {date}</p>
-                <p>Time: {time}</p>
-            </div>
-        )
-    }
-
     return (
         <div className="container">
-            <Header />
-            <SectionDateTime />
+            <h1>React Practice App #1</h1>
+            <DateTime />
+            <LikeArea />
+            <UserInput />
             <List />
         </div>
     )
