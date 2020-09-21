@@ -41,3 +41,15 @@ body {
     cursor: pointer;
     padding: 4px 8px;
 }
+.remove-item {
+    color: coral;
+    background: none;
+    border: 1px solid;
+    border-radius: 50%;
+    padding: 2px 5px;
+    cursor: pointer;
+    outline: none;
+}
+.remove-item:hover {
+    color: red;
+}
