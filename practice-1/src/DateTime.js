@@ -2,15 +2,20 @@ import React, { useState, useEffect } from "react"
 
 function DateTime() {
     const [time, setTime] = useState(new Date().toLocaleTimeString())
-    const [date] = useState(new Date().toLocaleDateString())
 
-    setTimeout(() => {
-        setTime(new Date().toLocaleTimeString())
-    }, 1000)
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setTime(new Date().toLocaleTimeString())
+        }, 1000)
+
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [time])
 
     return (
-        <div className="date-time">
-            <p>Date: {date}</p>
+        <div className="DateTime">
+            <p>Date: {new Date().toLocaleDateString()}</p>
             <p>Time: {time}</p>
         </div>
     )

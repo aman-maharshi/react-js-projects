@@ -1,33 +1,55 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
 body {
-    font-family: "Quicksand", sans-serif;
-}
-* {
+    margin: 0;
+    font-family: "Kumbh Sans", sans-serif;
+    color: #333;
     font-size: 1.1rem;
 }
-.container {
-    border: 1px solid gray;
+.App {
+    max-width: 800px;
+    margin: 1rem auto;
     padding: 1rem;
 }
-.date-time {
+.DateTime {
     display: flex;
     justify-content: space-between;
-}
-.like {
-    color: gray;
-    background: rgb(196, 240, 255);
-    padding: 10px 0;
-    border-bottom: 2px solid rgb(170, 170, 170);
+    border-bottom: 1px solid #ececec;
     margin-bottom: 1rem;
 }
-.like span {
-    display: inline-block;
-    margin: 0 1rem;
+.TodoItem {
+    margin-bottom: 5px;
 }
-.like button {
-    color: rgb(54, 54, 54);
+.TodoList {
+    border-bottom: 1px solid #ececec;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
 }
-.input-form input:first-child {
-    margin-right: 1rem;
+.LikeArea button {
+    font-size: 1rem;
+    margin-left: 5px;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+.AddTodo input {
+    font-size: 1rem;
+    width: 250px;
+    padding: 4px 8px;
+}
+.AddTodo button {
+    font-size: 1rem;
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+.remove-item {
+    color: coral;
+    background: none;
+    border: 1px solid;
+    border-radius: 50%;
+    padding: 2px 5px;
+    cursor: pointer;
+    outline: none;
+}
+.remove-item:hover {
+    color: red;
 }

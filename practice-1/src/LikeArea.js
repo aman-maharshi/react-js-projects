@@ -1,25 +1,16 @@
 import React, { useState } from "react"
 
 function LikeArea() {
-    const [counter, setCounter] = useState(2)
+    const [like, setLike] = useState(3)
 
     function handleLike() {
-        setCounter(prev => {
-            if (prev < 10) {
-                return prev + 1
-            } else {
-                return prev
-            }
-        })
+        setLike(prev => prev + 1)
     }
 
     return (
-        <div className="like">
-            <span>
-                <button onClick={handleLike}>Like</button>
-            </span>
-            This page has been liked {counter} times.
-        </div>
+        <p className="LikeArea">
+            This page has been liked {like} times <button onClick={handleLike}>Like</button>
+        </p>
     )
 }
 
