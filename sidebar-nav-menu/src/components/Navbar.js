@@ -15,14 +15,14 @@ function Navbar() {
     return (
         <>
             <div className="navbar">
-                <Link to="#" className="menu-bars">
+                <Link to="#" className="toggle-icon">
                     <FaIcons.FaBars onClick={handleNavToggle} />
                 </Link>
             </div>
             <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-                <ul className="nav-menu-items">
+                <ul className="nav-menu-items" onClick={handleNavToggle}>
                     <li className="navbar-toggle">
-                        <Link to="#" className="menu-bars">
+                        <Link to="#" className="toggle-icon">
                             <AiIcons.AiOutlineClose />
                         </Link>
                     </li>

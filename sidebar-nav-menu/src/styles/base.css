@@ -2,4 +2,30 @@
 
 body {
     font-family: "Montserrat", sans-serif;
+    margin: 0;
+}
+
+.navbar {
+    background: black;
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.toggle-icon {
+    font-size: 2rem;
+    margin-left: 2rem;
+}
+.nav-menu {
+    background: black;
+    width: 250px;
+    height: 50vh;
+    position: fixed;
+    top: 0;
+    transition: 0.85s;
+    left: -100%;
+}
+.nav-menu.active {
+    left: 0;
+    transition: 0.35s;
 }
