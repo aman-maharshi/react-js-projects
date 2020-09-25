@@ -1,15 +1,23 @@
 const SidebarData = [
     {
         title: "Home",
-        path: "/"
+        path: "/",
+        class: "nav-link"
     },
     {
         title: "About",
-        path: "/about"
+        path: "/about",
+        class: "nav-link"
     },
     {
         title: "Projects",
-        path: "/projects"
+        path: "/projects",
+        class: "nav-link"
+    },
+    {
+        title: "Contact",
+        path: "/contact",
+        class: "nav-link"
     }
 ]
 

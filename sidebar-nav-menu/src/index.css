@@ -1,2 +1,80 @@
-@import "./styles/base.css";
-@import "./styles/page-section.css";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap");
+
+body {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+}
+
+a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+/*
+    NAV BAR
+*/
+
+.navbar {
+    background: #17141d;
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.toggle-icon {
+    font-size: 2rem;
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu {
+    background: #17141d;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    transition: 0.85s;
+    left: -100%;
+}
+.nav-menu.active {
+    left: 0;
+    transition: 0.35s;
+}
+.navbar-toggle-cross {
+    margin-top: 1.5rem;
+}
+.nav-link {
+    margin: 0;
+}
+.nav-link a {
+    letter-spacing: 2px;
+    transition: all 0.5s ease;
+}
+.nav-link a:hover {
+    background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    text-shadow: none;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+.nav-link:not(:first-child) {
+    margin-top: 3rem;
+}
+
+/*
+    PAGE SECTIONS
+*/
+
+.page-section {
+    font-size: 5rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    width: 100vw;
+    color: white;
+    background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+}
