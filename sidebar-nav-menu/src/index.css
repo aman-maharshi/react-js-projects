@@ -56,11 +56,34 @@ a {
 .nav-link a:hover {
     background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
     text-shadow: none;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
 .nav-link:not(:first-child) {
     margin-top: 3rem;
+}
+@media (max-width: 576px) {
+    .toggle-icon {
+        font-size: 1.75rem;
+        margin-left: 1rem;
+    }
+    .navbar-toggle-cross .nav-link {
+        margin-left: 0;
+    }
+
+    .nav-menu {
+        width: 150px;
+    }
+    .nav-link:not(:first-child) {
+        margin-top: 2rem;
+    }
+    .nav-menu-items {
+        padding-left: 1.25rem;
+    }
+    .nav-link a {
+        font-size: 1.25rem;
+    }
 }
 
 /*
