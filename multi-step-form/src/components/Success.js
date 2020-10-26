@@ -10,9 +10,13 @@ class Success extends React.Component {
         return (
             <div className="form-container">
                 <h1>Success</h1>
-
+                <div className="form-inputs">
+                    <p>Thank you for your submission.</p>
+                </div>
                 <div className="form-buttons">
-                    <button onClick={this.previous}>Back</button>
+                    <button className="back-button" onClick={this.previous}>
+                        Back
+                    </button>
                 </div>
             </div>
         )
