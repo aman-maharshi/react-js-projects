@@ -37,6 +37,12 @@ class App extends React.Component {
                     <button onClick={this.clearAll} disabled={listItems.length ? false : true}>
                         Clear All
                     </button>
+                    <p className="footer">
+                        Coded by{" "}
+                        <a href="http://amanmaharshi.com" target="_blank">
+                            Aman Maharshi
+                        </a>{" "}
+                    </p>
                 </main>
             </>
         )
