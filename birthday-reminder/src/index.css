@@ -74,6 +74,7 @@ button {
     cursor: pointer;
     border-radius: 5px;
     font-weight: 500;
+    margin-top: 5px;
 }
 button:disabled {
     background: gray;

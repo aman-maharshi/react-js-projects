@@ -1,5 +1,6 @@
 import React from "react"
 import data from "./data.js"
+import Footer from "./Footer"
 
 class App extends React.Component {
     state = {
@@ -10,6 +11,10 @@ class App extends React.Component {
         this.setState({
             listItems: []
         })
+    }
+
+    reload = () => {
+        window.location.reload()
     }
 
     render() {
@@ -37,12 +42,8 @@ class App extends React.Component {
                     <button onClick={this.clearAll} disabled={listItems.length ? false : true}>
                         Clear All
                     </button>
-                    <p className="footer">
-                        Coded by{" "}
-                        <a href="http://amanmaharshi.com" target="_blank">
-                            Aman Maharshi
-                        </a>{" "}
-                    </p>
+                    {!listItems.length && <button onClick={this.reload}>Reload</button>}
+                    <Footer />
                 </main>
             </>
         )
