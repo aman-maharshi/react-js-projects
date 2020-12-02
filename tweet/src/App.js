@@ -10,7 +10,7 @@ function App() {
         <div>
             <h1>Create Tweet</h1>
             <CreateTweet newTweet={newTweet} setNewTweet={setNewTweet} tweetList={tweetList} setTweetList={setTweetList} />
-            <TweetList tweetList={tweetList} />
+            <TweetList tweetList={tweetList} setTweetList={setTweetList} />
         </div>
     )
 }

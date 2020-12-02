@@ -8,12 +8,12 @@ function CreateTweet({ newTweet, setNewTweet, tweetList, setTweetList }) {
     const handleSubmit = e => {
         e.preventDefault()
         setTweetList([...tweetList, newTweet])
-        document.querySelector("#inputForm").reset()
+        setNewTweet("")
     }
 
     return (
-        <form id="inputForm">
-            <textarea onChange={handleInputChange} cols="50" rows="5"></textarea>
+        <form>
+            <textarea onChange={handleInputChange} cols="50" rows="5" value={newTweet}></textarea>
             <button onClick={handleSubmit}>Submit</button>
         </form>
     )
