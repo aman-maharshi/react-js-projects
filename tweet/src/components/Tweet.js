@@ -7,10 +7,17 @@ function Tweet({ tweet, tweetList, setTweetList }) {
     }
 
     return (
-        <div>
-            <h3>{tweet.message}</h3>
-            <button>Like</button>
-            <button onClick={handleDelete}>Delete</button>
+        <div className="tweet">
+            <div className="pic">
+                <img src="https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg" alt="user" />
+            </div>
+            <div>
+                <h3>
+                    User <span>@username</span>
+                </h3>
+                <p>{tweet.message}</p>
+                <button onClick={handleDelete}>Delete</button>
+            </div>
         </div>
     )
 }

@@ -15,9 +15,9 @@ function CreateTweet({ newTweet, setNewTweet, tweetList, setTweetList }) {
     }
 
     return (
-        <form>
-            <textarea onChange={handleInputChange} cols="50" rows="5" value={newTweet}></textarea>
-            <button onClick={handleSubmit}>Submit</button>
+        <form className="create-tweet">
+            <textarea onChange={handleInputChange} cols="50" rows="3" value={newTweet} placeholder="What's Happening?"></textarea>
+            <button onClick={handleSubmit}>Tweet</button>
         </form>
     )
 }
