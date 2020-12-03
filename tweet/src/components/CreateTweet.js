@@ -1,4 +1,5 @@
 import React from "react"
+import { v4 as uuidv4 } from "uuid"
 
 function CreateTweet({ newTweet, setNewTweet, tweetList, setTweetList }) {
     const handleInputChange = e => {
@@ -7,7 +8,9 @@ function CreateTweet({ newTweet, setNewTweet, tweetList, setTweetList }) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        setTweetList([...tweetList, newTweet])
+        if (newTweet) {
+            setTweetList([...tweetList, { id: uuidv4(), message: newTweet }])
+        }
         setNewTweet("")
     }
 

@@ -1,16 +1,14 @@
 import React from "react"
 
-function Tweet({ id, value, tweetList, setTweetList }) {
+function Tweet({ tweet, tweetList, setTweetList }) {
     const handleDelete = e => {
         e.preventDefault()
-        const tweets = [...tweetList]
-        tweets.splice(id, 1)
-        setTweetList(tweets)
+        setTweetList(tweetList.filter(obj => obj.id !== tweet.id))
     }
 
     return (
         <div>
-            <h3>{value}</h3>
+            <h3>{tweet.message}</h3>
             <button>Like</button>
             <button onClick={handleDelete}>Delete</button>
         </div>
