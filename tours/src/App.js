@@ -1,24 +1,33 @@
 import React, { useState, useEffect } from "react"
 
 function App() {
-    const [loading, setLoading] = useState(false)
-    const [data, setData] = useState([])
+    const [toursData, setToursData] = useState([])
 
     const dataUrl = "https://course-api.com/react-tours-project"
 
+    const getData = async () => {
+        const response = await fetch(dataUrl)
+        const data = await response.json()
+        setToursData(data)
+    }
+
     useEffect(() => {
-        fetch(dataUrl)
-            .then(response => response.json())
-            .then(result => {
-                setLoading(true)
-                setData(result)
-            })
+        getData()
     }, [])
 
     return (
         <div>
-            <p>Hi</p>
-            {loading ? console.log(data) : "Loading..."}
+            {toursData.length ? (
+                toursData.map(item => {
+                    return (
+                        <p key={item.id} id={item.id}>
+                            {item.name}
+                        </p>
+                    )
+                })
+            ) : (
+                <p>Loading...</p>
+            )}
         </div>
     )
 }
