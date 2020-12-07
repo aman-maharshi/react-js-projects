@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import Tour from "./Tour"
 
 function App() {
     const [toursData, setToursData] = useState([])
@@ -16,18 +17,17 @@ function App() {
     }, [])
 
     return (
-        <div>
-            {toursData.length ? (
-                toursData.map(item => {
-                    return (
-                        <p key={item.id} id={item.id}>
-                            {item.name}
-                        </p>
-                    )
-                })
-            ) : (
-                <p>Loading...</p>
-            )}
+        <div className="wrapper">
+            <h1 className="title">Available Tours</h1>
+            <div className="tour-container">
+                {toursData.length ? (
+                    toursData.map(item => {
+                        return <Tour key={item.id} id={item.id} tour={item} />
+                    })
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </div>
         </div>
     )
 }
