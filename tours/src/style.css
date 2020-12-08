@@ -97,3 +97,11 @@ body {
     font-size: 1.5rem;
     text-align: center;
 }
+.read-more-btn {
+    cursor: pointer;
+    color: #30627c;
+    font-weight: bold;
+    border: none;
+    background: none;
+    text-decoration: underline;
+}

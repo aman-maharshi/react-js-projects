@@ -2,17 +2,22 @@ import React, { useState, useEffect } from "react"
 import Tour from "./Tour"
 
 function App() {
-    const [toursData, setToursData] = useState([])
     const [loading, setLoading] = useState(false)
+    const [toursData, setToursData] = useState([])
 
     const dataUrl = "https://course-api.com/react-tours-project"
 
     const getData = async () => {
         setLoading(true)
-        const response = await fetch(dataUrl)
-        const data = await response.json()
-        setToursData(data)
-        setLoading(false)
+        try {
+            const response = await fetch(dataUrl)
+            const data = await response.json()
+            setToursData(data)
+            setLoading(false)
+        } catch (error) {
+            setLoading(false)
+            console.log(error)
+        }
     }
 
     useEffect(() => {
