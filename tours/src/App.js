@@ -24,9 +24,15 @@ function App() {
             <h1 className="title">Tours</h1>
             <div className="tour-container">
                 {!loading ? (
-                    toursData.map(item => {
-                        return <Tour key={item.id} id={item.id} tour={item} toursData={toursData} setToursData={setToursData} reloadData={getData} />
-                    })
+                    toursData.length ? (
+                        toursData.map(item => {
+                            return <Tour key={item.id} id={item.id} tour={item} toursData={toursData} setToursData={setToursData} />
+                        })
+                    ) : (
+                        <button className="tours__button" onClick={() => getData()}>
+                            Reload
+                        </button>
+                    )
                 ) : (
                     <p className="loading">Loading...</p>
                 )}
