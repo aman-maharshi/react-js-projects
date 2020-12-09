@@ -9,11 +9,22 @@ function App() {
 
     return (
         <div>
-            <h1>Reviews</h1>
+            <h1>Testimonials</h1>
             <div className="review-card">
-                <p>{name}</p>
-                <p>{job}</p>
-                <p>{text}</p>
+                <div className="content-box">
+                    <div className="image">
+                        <img src={image} alt={id} />
+                    </div>
+                    <div className="text">
+                        <p className="name">{name}</p>
+                        <p className="role">{job}</p>
+                        <p className="review">{text}</p>
+                    </div>
+                </div>
+                <div className="button-box">
+                    <button>Prev</button>
+                    <button>Next</button>
+                </div>
             </div>
         </div>
     )

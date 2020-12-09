@@ -1,18 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap");
+
+$black: #1d3144;
+$gray: #999da6;
+$white: #fafafb;
+
 html,
 body {
     height: 100%;
 }
 body {
     margin: 0;
-    background: lightblue;
+    background: $white;
+    color: $black;
     padding: 1rem;
     display: flex;
     justify-content: center;
+    font-family: "Padauk", sans-serif;
+    padding-top: 5rem;
+}
+
+h1 {
+    text-align: center;
 }
 
 .review-card {
-    background: white;
-    box-shadow: 1px 2px 4px gray;
     padding: 1rem;
     max-width: 600px;
+    border-radius: 5px;
+    box-shadow: 1px 5px 10px $gray;
+
+    .content-box {
+        display: flex;
+        min-height: 225px;
+
+        .image {
+            flex: 2;
+            margin-right: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                display: block;
+                height: 150px;
+                width: 150px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+        .text {
+            flex: 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .name {
+                font-weight: bold;
+                text-transform: capitalize;
+                font-size: 1.2rem;
+                margin-bottom: 0;
+            }
+            .role {
+                color: $gray;
+                text-transform: capitalize;
+                margin: 10px 0;
+            }
+            .review {
+                margin-top: 0;
+            }
+        }
+    }
+    .button-box {
+        display: flex;
+        justify-content: center;
+
+        button {
+            padding: 5px 20px;
+            border: none;
+            outline: none;
+            background: $black;
+            color: $white;
+            border-radius: 25px;
+            cursor: pointer;
+
+            &:first-child {
+                margin-right: 1rem;
+            }
+        }
+    }
 }
