@@ -4,10 +4,6 @@ $black: #1d3144;
 $gray: #999da6;
 $white: #fafafb;
 
-html,
-body {
-    height: 100%;
-}
 body {
     margin: 0;
     background: $white;
@@ -87,5 +83,42 @@ h1 {
                 margin-right: 1rem;
             }
         }
+    }
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding-top: 0;
+    }
+    .content-box {
+        flex-direction: column;
+    }
+    .text {
+        text-align: center;
+    }
+    .review {
+        min-height: 145px;
+    }
+    footer {
+        position: relative;
+    }
+}
+
+@media (max-height: 576px) {
+    footer {
+        position: relative;
+        margin-top: 2rem;
     }
 }
