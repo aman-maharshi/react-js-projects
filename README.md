@@ -4,6 +4,7 @@
 
 1. [Sidebar Nav Toggle](https://aman-maharshi.github.io/react-js-projects/sidebar-nav-menu/build/)
 1. [Multi Step Form](https://aman-maharshi.github.io/react-js-projects/multi-step-form/build/)
+1. [Review Slider](https://aman-maharshi.github.io/react-js-projects/review-slider/build/)
 1. [Simple Tweet](https://aman-maharshi.github.io/react-js-projects/tweet/build/)
 1. [Birthday Reminder](https://aman-maharshi.github.io/react-js-projects/birthday-reminder/build/)
 
