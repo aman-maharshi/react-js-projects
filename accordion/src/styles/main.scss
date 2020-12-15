@@ -1,6 +1,10 @@
 .main-container {
     width: 700px;
     margin: 2rem auto;
+
+    h1 {
+        text-align: center;
+    }
 }
 
 .accordion {
@@ -18,6 +22,7 @@
             cursor: pointer;
             font-size: 1.25rem;
             outline: none;
+            border: none;
             background: lightgray;
             border-radius: 50%;
             width: 30px;
