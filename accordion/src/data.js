@@ -1,28 +1,33 @@
 const questions = [
     {
         id: 1,
-        title: "Do I have to allow the use of cookes?",
-        info: "Unicorn vinyl poutine brooklyn, next level direct trade iceland. Shaman copper mug church-key coloring book, whatever poutine normcore fixie cred kickstarter post-ironic street art."
+        title: "What is Hoisting?",
+        info: "Moving the variables and function declarations to the top of the script."
     },
     {
         id: 2,
-        title: "How do I change my My Page password?",
-        info: "Coloring book forage photo booth gentrify lumbersexual. Migas chillwave poutine synth shoreditch, enamel pin thundercats fashion axe roof party polaroid chartreuse."
+        title: "What does a Promise mean?",
+        info: "A promise represents an unknown value now that may become available in the future. They are really useful in handling async calls."
     },
     {
         id: 3,
-        title: "What is BankID?",
-        info: "Enamel pin fam sustainable woke whatever venmo. Authentic asymmetrical put a bird on it, lumbersexual activated charcoal kinfolk banjo cred pickled sartorial."
+        title: "Define Closures?",
+        info: "When we have nested functions, closures are functions that have access to outer functions variables even after the outer functions has returned."
     },
     {
         id: 4,
-        title: "Whose birth number can I use?",
-        info: "Edison bulb direct trade gentrify beard lo-fi seitan sustainable roof party franzen occupy squid. Knausgaard cronut succulents, scenester readymade shabby chic lyft. Copper mug meh vegan gentrify."
+        title: "What's function Currying?",
+        info: "Taking a function and creating more functions out of it is known as function currying. It can be done using bind method or closures."
     },
     {
         id: 5,
-        title: "When do I recieve a password ordered by letter?",
-        info: "Locavore franzen fashion axe live-edge neutra irony synth af tilde shabby chic man braid chillwave waistcoat copper mug messenger bag. Banjo snackwave blog, microdosing thundercats migas vaporware viral lo-fi seitan "
+        title: "Give an example where debouncing is required.",
+        info: "When we have to slow down the occurrence of an event, for example - we want to make the scroll event listener trigger not on every little scroll but say after 500ms, then we can use a debounce function."
+    },
+    {
+        id: 6,
+        title: "Differentiate between var and let variable declarations.",
+        info: "One of the differences is that 'var' has functional scope where as 'let' has block level scope"
     }
 ]
 export default questions
