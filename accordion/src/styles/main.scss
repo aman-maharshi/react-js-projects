@@ -52,12 +52,18 @@ body {
         }
     }
     .answer {
-        display: none;
+        // display: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+
+        .answer__inner {
+            padding: 1rem;
+            border-top: 1px solid #ececec;
+        }
     }
     .show-answer {
-        padding: 1rem;
-        display: block;
-        border-top: 1px solid #ececec;
+        max-height: 100px;
     }
 }
 

@@ -15,7 +15,9 @@ function Accordion({ question, answer }) {
                     {answerVisible ? "-" : "+"}
                 </button>
             </div>
-            <div className={"answer" + (answerVisible ? " show-answer" : "")}>{answer}</div>
+            <div className={"answer" + (answerVisible ? " show-answer" : "")}>
+                <div className="answer__inner">{answer}</div>
+            </div>
         </div>
     )
 }
