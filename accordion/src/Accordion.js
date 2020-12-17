@@ -1,11 +1,24 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 function Accordion({ question, answer }) {
     const [answerVisible, setAnswerVisible] = useState(false)
+    const [answerElement, setAnswerElement] = useState(null)
 
-    const toggleAccordion = () => {
+    const toggleAccordion = e => {
         setAnswerVisible(!answerVisible)
+        setAnswerElement(e.target.parentElement.nextElementSibling)
     }
+
+    useEffect(() => {
+        if (answerVisible) {
+            const height = answerElement.scrollHeight
+            answerElement.style.maxHeight = height + "px"
+        } else {
+            if (answerElement) {
+                answerElement.style.maxHeight = 0
+            }
+        }
+    }, [answerVisible, answerElement])
 
     return (
         <div className="accordion">
