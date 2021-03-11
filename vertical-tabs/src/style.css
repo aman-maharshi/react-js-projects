@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+
 body {
     margin: 0;
+    font-family: "Montserrat", sans-serif;
 }
 
 h1 {
@@ -13,7 +16,7 @@ h1 {
 
 main {
     max-width: 1000px;
-    margin: 1em auto;
+    margin: 2em auto 0 auto;
     display: flex;
 }
 .left {
@@ -23,12 +26,56 @@ main {
 }
 .left button {
     margin-bottom: 1em;
+    font-family: "Montserrat", sans-serif;
 }
-
 .right {
     flex: 4;
-    padding: 1em;
+    padding-left: 1.5rem;
+}
+.right h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.right h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.date {
+    color: #9298c5;
+    font-weight: 600;
+    margin-top: 0;
+}
+.right ul {
+    line-height: 1.5;
+    padding-left: 1.5rem;
+}
+.btn {
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #5158b6;
+    color: #5158b6;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 600;
 }
 .btn-active {
-    color: green;
+    color: white;
+    background: #5158b6;
+}
+
+@media (max-width: 576px) {
+    main {
+        flex-direction: column;
+    }
+    .left {
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    .left button {
+        margin-bottom: 0;
+        margin-right: 1rem;
+    }
 }

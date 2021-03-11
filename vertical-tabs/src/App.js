@@ -26,7 +26,7 @@ function App() {
                     <div className="left">
                         {jobs.map((item, index) => {
                             return (
-                                <button onClick={() => setJobIndex(index)} key={item.id} className={`${index === jobIndex && "btn-active"}`}>
+                                <button onClick={() => setJobIndex(index)} key={item.id} className={`btn ${index === jobIndex && "btn-active"}`}>
                                     {item.company}
                                 </button>
                             )
@@ -35,7 +35,7 @@ function App() {
                     <div className="right">
                         <h2>{jobs[jobIndex].title}</h2>
                         <h3>{jobs[jobIndex].company}</h3>
-                        <p>{jobs[jobIndex].dates}</p>
+                        <p className="date">{jobs[jobIndex].dates}</p>
                         <ul>
                             {jobs[jobIndex].duties.map((item, index) => {
                                 return <li key={index}>{item}</li>
