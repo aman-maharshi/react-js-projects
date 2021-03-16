@@ -10,12 +10,16 @@ function App() {
                 {data.map(item => {
                     const { title, image } = item
                     return (
-                        <div className="slider__content">
+                        <article>
                             <img src={image} alt={title} />
-                            <span className="title">{title}</span>
-                        </div>
+                            <p className="title">{title}</p>
+                        </article>
                     )
                 })}
+            </div>
+            <div className="nav-buttons">
+                <button>Prev</button>
+                <button>Next</button>
             </div>
         </div>
     )

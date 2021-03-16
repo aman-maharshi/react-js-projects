@@ -2,33 +2,40 @@ body {
     margin: 0;
 }
 .slider {
-    margin-top: 4rem;
-    border: 1px solid gray;
+    margin-top: 3rem;
+    padding: 1rem;
 }
 .slider__wrapper {
     display: flex;
     justify-content: center;
+    border: 1px solid gray;
+    padding: 1rem;
 }
-.slider__content {
+article {
     height: 400px;
     width: 400px;
-    position: relative;
+    padding: 1rem;
+    background: linen;
+    border: 1px solid lightgray;
 }
-.slider__content img {
+article img {
     object-fit: cover;
-    height: 100%;
     width: 100%;
+    height: 85%;
 }
-.slider__content span {
-    position: absolute;
+article p {
     font-weight: bold;
-    font-size: 4rem;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.4);
+    font-size: 2rem;
+    margin-bottom: 0;
+    margin-top: 10px;
+    text-align: center;
 }
-/*
-    TEST
-*/
+.nav-buttons {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+.nav-buttons button {
+    cursor: pointer;
+    margin: 0 1rem;
+}
