@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import imageData from "./data"
+import { GrPrevious, GrNext } from "react-icons/gr"
 
 function App() {
     const [data, setData] = useState(imageData)
@@ -18,10 +19,12 @@ function App() {
                     )
                 })}
             </div>
-            <div className="nav-buttons">
-                <button>Prev</button>
-                <button>Next</button>
-            </div>
+            <button className="prevButton">
+                <GrPrevious />
+            </button>
+            <button className="nextButton">
+                <GrNext />
+            </button>
         </div>
     )
 }

@@ -7,6 +7,10 @@ body {
 .slider {
     margin-top: 3rem;
     padding: 1rem;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
 }
 .slider__wrapper {
     border: 1px solid lightgray;
@@ -29,6 +33,7 @@ article {
     background: linen;
     border: 1px solid lightgray;
     transition: all 0.3s linear;
+    opacity: 0;
 }
 article.activeSlide {
     opacity: 1;
@@ -52,12 +57,20 @@ article p {
     margin-top: 10px;
     text-align: center;
 }
-.nav-buttons {
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-}
-.nav-buttons button {
+.prevButton,
+.nextButton {
     cursor: pointer;
     margin: 0 1rem;
+    font-size: 1.2rem;
+    border: none;
+    background: none;
+    position: absolute;
+    top: 50%;
+    outline: none;
+}
+.prevButton {
+    left: -1rem;
+}
+.nextButton {
+    right: -1rem;
 }
