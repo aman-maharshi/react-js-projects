@@ -6,9 +6,10 @@
 
 1. [Accordion](https://aman-maharshi.github.io/react-js-projects/accordion/build/)
 1. [Shopping Tabs](https://aman-maharshi.github.io/react-js-projects/tabs/build/)
-1. [Reviews Switcher](https://aman-maharshi.github.io/react-js-projects/review-slider/build/)
+1. [Carousel / Slider](https://aman-maharshi.github.io/react-js-projects/carousel-slider/build/)
 1. [Multi Step Form](https://aman-maharshi.github.io/react-js-projects/multi-step-form/build/)
 1. [Sidebar Navigation](https://aman-maharshi.github.io/react-js-projects/sidebar-nav-menu/build/)
+1. [Reviews](https://aman-maharshi.github.io/react-js-projects/review-slider/build/)
 
 #### API Projects - Apps using data from external APIs
 
