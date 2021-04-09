@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import imageData from "./data"
 import { GrPrevious, GrNext } from "react-icons/gr"
 
@@ -22,6 +22,18 @@ function App() {
             setDataIndex(data.length - 1)
         }
     }
+
+    // // auto Slide after 3 seconds
+    // // running it the first time page loads and everytime after dataIndex is changed
+    // useEffect(() => {
+    //     let autoSlide = setInterval(() => {
+    //         handleNextClick()
+    //     }, 3000)
+
+    //     return () => {
+    //         clearInterval(autoSlide)
+    //     }
+    // }, [dataIndex])
 
     return (
         <div className="slider">
