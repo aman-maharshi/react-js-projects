@@ -35,6 +35,7 @@ article {
     transition: all 0.3s linear;
     opacity: 0;
 }
+/* the following 3 classes will be triggered using JavaScript */
 article.activeSlide {
     opacity: 1;
     transform: translateX(0);
@@ -67,6 +68,10 @@ article p {
     position: absolute;
     top: 50%;
     outline: none;
+    background: white;
+    padding: 5px;
+    padding-bottom: 0;
+    border-radius: 50%;
 }
 .prevButton {
     left: -1rem;
