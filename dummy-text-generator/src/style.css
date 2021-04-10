@@ -1,3 +1,28 @@
 body {
-    background: linen;
+    font-family: sans-serif;
+}
+
+form {
+    margin: 1rem auto;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+.inputbox {
+    margin-bottom: 1rem;
+    display: flex;
+}
+.inputbox span {
+    margin-left: 1rem;
+    background: lightgray;
+    padding: 10px 15px;
+    border-radius: 50%;
+}
+.result {
+    margin: 1rem auto;
+    max-width: 500px;
 }
