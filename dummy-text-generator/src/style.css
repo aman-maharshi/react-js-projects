@@ -1,24 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap");
 body {
-    font-family: sans-serif;
+    background: #23283c;
+    color: #7b84b6;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 form {
-    margin: 1rem auto;
-    border: 1px solid lightgray;
+    margin: 3rem auto 2rem auto;
+    background: #343953;
     border-radius: 5px;
     max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1rem;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
+form p {
+    color: white;
+    margin-bottom: 2rem;
+}
+form button {
+    background: #2a2f46;
+    color: white;
+    border: none;
+    margin-left: 1rem;
+    border-radius: 5px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    cursor: pointer;
+    transition: 0.3s all ease;
+    font-size: 1.1rem;
+    outline: none;
+    font-weight: 600;
+}
+form button:hover {
+    background: black;
+}
+
 .inputbox {
     margin-bottom: 1rem;
     display: flex;
 }
 .inputbox span {
     margin-left: 1rem;
-    background: lightgray;
+    background: white;
+    color: #2a2f46;
     padding: 10px 15px;
     border-radius: 50%;
 }
