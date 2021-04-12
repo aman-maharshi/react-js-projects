@@ -10,6 +10,7 @@
 1. [Multi Step Form](https://aman-maharshi.github.io/react-js-projects/multi-step-form/build/)
 1. [Sidebar Navigation](https://aman-maharshi.github.io/react-js-projects/sidebar-nav-menu/build/)
 1. [Reviews](https://aman-maharshi.github.io/react-js-projects/review-slider/build/)
+1. [Dummy Text Generator](https://aman-maharshi.github.io/react-js-projects/dummy-text-generator/build/)
 
 #### API Projects - Apps using data from external APIs
 
