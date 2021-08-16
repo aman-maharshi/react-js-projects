@@ -19,7 +19,7 @@ body {
 }
 .form input {
     border: none;
-    min-width: 200px;
+    min-width: 150px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     outline: none;
@@ -37,4 +37,25 @@ body {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     font-family: "Raleway", sans-serif;
+}
+.error {
+    color: red;
+    font-size: 13px;
+    margin-left: 5px;
+}
+.colors-container {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+.color-tile {
+    padding: 10px;
+    width: 30%;
+    text-align: center;
+}
+
+@media (max-width: 576px) {
+    .color-tile {
+        width: 100%;
+    }
 }

@@ -1,13 +1,26 @@
 import React, { useState } from "react"
+import Values from "values.js"
+
+const ColorBlock = props => {
+    const rgbString = props.color.rgb.join(",")
+    return (
+        <div className="color-tile" style={{ background: `rgb(${rgbString})` }}>
+            <div>{props.color.hex}</div>
+            <div>{props.color.weight}</div>
+        </div>
+    )
+}
 
 function App() {
     const [userInput, setUserInput] = useState("")
     const [error, setError] = useState(false)
+    const [colorShades, setColorShades] = useState(null)
 
     const handleSubmit = e => {
         e.preventDefault()
         try {
-            console.log(userInput)
+            const color = new Values(userInput)
+            setColorShades(color.all(20))
             setError(false)
         } catch (e) {
             console.log(e)
@@ -25,13 +38,13 @@ function App() {
                 <button type="submit">Generate</button>
             </form>
             {error ? <span className="error">Invalid Color Code</span> : null}
-            <div>{/* {colorShades.map(color => {
-                    return (
-                        <ul>
-                            <li>{color.hex}</li>
-                        </ul>
-                    )
-                })} */}</div>
+            <div className="colors-container">
+                {colorShades &&
+                    !error &&
+                    colorShades.map((color, index) => {
+                        return <ColorBlock key={index} color={color} />
+                    })}
+            </div>
         </div>
     )
 }
