@@ -41,7 +41,9 @@ body {
 .error {
     color: red;
     font-size: 13px;
-    margin-left: 5px;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
 }
 .colors-container {
     margin-top: 1rem;
@@ -51,7 +53,11 @@ body {
 .color-tile {
     padding: 10px;
     width: 30%;
-    text-align: center;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 576px) {
