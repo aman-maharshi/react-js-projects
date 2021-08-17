@@ -15,6 +15,10 @@ body {
     border-radius: 10px;
     padding: 1rem;
 }
+.acceptable-formats {
+    font-size: 14px;
+    color: gray;
+}
 @media (max-width: 576px) {
     .wrapper {
         margin: 1rem auto;
@@ -49,8 +53,8 @@ body {
     font-family: "Source Sans Pro", sans-serif;
 }
 .error {
-    color: red;
-    font-size: 13px;
+    color: #cc2727;
+    font-size: 14px;
     margin-left: 1rem;
     display: flex;
     align-items: center;
@@ -68,12 +72,21 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.color-tile:hover {
+    transform: scale(1.03);
 }
 
 @media (max-width: 576px) {
     .color-tile {
         width: 100%;
     }
+}
+.color-copied {
+    font-size: 14px;
+    color: white;
 }
 
 footer {

@@ -1,17 +1,6 @@
 import React, { useState } from "react"
 import Values from "values.js"
-
-const ColorBlock = props => {
-    const { color, index } = props
-    let textColor = index > 4 ? "white" : "black"
-
-    return (
-        <div className="color-tile" style={{ background: `#${color.hex}`, color: textColor }}>
-            <div>#{color.hex}</div>
-            <div>{color.weight} %</div>
-        </div>
-    )
-}
+import ColorBlock from "./ColorBlock"
 
 function App() {
     const [userInput, setUserInput] = useState("")
@@ -35,12 +24,13 @@ function App() {
             <div className="page-content">
                 <div className="wrapper">
                     <h3>Color Shade Generator</h3>
-                    <p>Enter a color code to get its different shades. Ex : #27ae60 </p>
+                    <p>Enter a color code to get its different shades.</p>
+                    <p className="acceptable-formats">Acceptable color formats - Hex, RGB, Color Name</p>
 
                     <form className="form" onSubmit={handleSubmit}>
-                        <input type="text" value={userInput} onChange={e => setUserInput(e.target.value)} placeholder="Hex Color Code" />
+                        <input type="text" value={userInput} onChange={e => setUserInput(e.target.value)} placeholder="Color" />
                         <button type="submit">Generate</button>
-                        {error ? <div className="error">Invalid Color Code</div> : null}
+                        {error ? <div className="error">Invalid Color</div> : null}
                     </form>
 
                     <div className="colors-container">
