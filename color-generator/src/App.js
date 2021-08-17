@@ -31,24 +31,33 @@ function App() {
     }
 
     return (
-        <div className="wrapper">
-            <h3>Color Shade Generator</h3>
-            <p>Enter a color code to get its different shades. Ex : #e74c3c, #27ae60 </p>
+        <>
+            <div className="page-content">
+                <div className="wrapper">
+                    <h3>Color Shade Generator</h3>
+                    <p>Enter a color code to get its different shades. Ex : #27ae60 </p>
 
-            <form className="form" onSubmit={handleSubmit}>
-                <input type="text" value={userInput} onChange={e => setUserInput(e.target.value)} placeholder="Hex Color Code" />
-                <button type="submit">Generate</button>
-                {error ? <div className="error">Invalid Color Code</div> : null}
-            </form>
+                    <form className="form" onSubmit={handleSubmit}>
+                        <input type="text" value={userInput} onChange={e => setUserInput(e.target.value)} placeholder="Hex Color Code" />
+                        <button type="submit">Generate</button>
+                        {error ? <div className="error">Invalid Color Code</div> : null}
+                    </form>
 
-            <div className="colors-container">
-                {colorShades &&
-                    !error &&
-                    colorShades.map((color, index) => {
-                        return <ColorBlock key={index} color={color} index={index} />
-                    })}
+                    <div className="colors-container">
+                        {colorShades &&
+                            !error &&
+                            colorShades.map((color, index) => {
+                                return <ColorBlock key={index} color={color} index={index} />
+                            })}
+                    </div>
+                </div>
             </div>
-        </div>
+            <footer>
+                <p>
+                    Designed and Coded by <a href="https://www.linkedin.com/in/amanmaharshi/">Aman Maharshi</a>
+                </p>
+            </footer>
+        </>
     )
 }
 

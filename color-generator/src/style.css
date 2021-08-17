@@ -1,7 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap");
+
 body {
     background: #dde1ee;
-    font-family: "Raleway", sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
+    margin: 0;
+}
+.page-content {
+    min-height: calc(100vh - 100px);
 }
 .wrapper {
     max-width: 800px;
@@ -9,6 +14,11 @@ body {
     background: white;
     border-radius: 10px;
     padding: 1rem;
+}
+@media (max-width: 576px) {
+    .wrapper {
+        margin: 1rem auto;
+    }
 }
 .form {
     padding: 1rem;
@@ -26,7 +36,7 @@ body {
     padding: 10px;
     font-size: 1rem;
     background: #e6e6e6;
-    font-family: "Raleway", sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
 }
 .form button {
     border: none;
@@ -36,7 +46,7 @@ body {
     cursor: pointer;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    font-family: "Raleway", sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
 }
 .error {
     color: red;
@@ -53,7 +63,7 @@ body {
 .color-tile {
     padding: 10px;
     width: 30%;
-    height: 80px;
+    height: 75px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,4 +74,13 @@ body {
     .color-tile {
         width: 100%;
     }
+}
+
+footer {
+    text-align: center;
+    color: gray;
+}
+footer a {
+    color: black;
+    text-decoration: none;
 }
