@@ -24,7 +24,7 @@ function App() {
             <div className="page-content">
                 <div className="wrapper">
                     <h3>Color Shade Generator</h3>
-                    <p>Enter a color code to get its different shades.</p>
+                    <p>Enter a color to get its different shades.</p>
                     <p className="acceptable-formats">Acceptable color formats - Hex, RGB, Color Name</p>
 
                     <form className="form" onSubmit={handleSubmit}>
