@@ -14,9 +14,11 @@ const ColorBlock = props => {
     }
 
     useEffect(() => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             setIsColorCopied(false)
         }, 1000)
+
+        return () => clearTimeout(timeout)
     }, [isColorCopied])
 
     return (
