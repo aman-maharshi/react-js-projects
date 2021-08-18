@@ -1,16 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap");
 
 body {
     background: linen;
-    font-family: "Source Sans Pro", sans-serif;
     margin: 0;
 }
 * {
     box-sizing: border-box;
-    font-family: "Rubik", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 .page-content {
     min-height: calc(100vh - 80px);
+    padding: 1rem;
 }
 
 /*
