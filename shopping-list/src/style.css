@@ -58,8 +58,23 @@ body {
 
 .todo-item {
     background: var(--item-bg);
-    padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    padding: 0 10px;
+}
+.todo-text {
+    padding: 10px 0;
+}
+.edit-btn,
+.trash-btn {
+    cursor: pointer;
+}
+
+.edit-btn {
+    margin-right: 1rem;
 }
 
 /*

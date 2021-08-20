@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { GrEdit, GrTrash } from "react-icons/gr"
 
 function App() {
     const [showMessage, setShowMessage] = useState(false)
@@ -16,8 +17,20 @@ function App() {
                     </form>
 
                     <div>
-                        <p className="todo-item">Bread</p>
-                        <p className="todo-item">Milk</p>
+                        <div className="todo-item">
+                            <div className="todo-text">Bread</div>
+                            <div>
+                                <GrEdit className="edit-btn" />
+                                <GrTrash className="trash-btn" />
+                            </div>
+                        </div>
+                        <div className="todo-item">
+                            <div className="todo-text">Milk</div>
+                            <div>
+                                <GrEdit className="edit-btn" />
+                                <GrTrash className="trash-btn" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
