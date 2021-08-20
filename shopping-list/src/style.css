@@ -1,8 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap");
 
+:root {
+    --text-color: #17103b;
+    --card-bg: linear-gradient(90deg, rgba(212, 237, 238, 1) 0%, rgba(217, 229, 222, 1) 70%);
+    --submit-btn: #f3a392;
+    --item-bg: #c3dfd8;
+}
+
 body {
-    background: linen;
+    background: var(--text-color);
     margin: 0;
+    color: var(--text-color);
 }
 * {
     box-sizing: border-box;
@@ -10,7 +18,48 @@ body {
 }
 .page-content {
     min-height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.app {
+    background: var(--card-bg);
     padding: 1rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 6px 8px;
+}
+.form {
+    position: relative;
+    padding-bottom: 1rem;
+}
+.form input,
+.form button {
+    border: none;
+    font-size: 1rem;
+    padding: 10px 1rem;
+    border-radius: 5px;
+}
+
+.form input {
+    margin-right: 1rem;
+    min-width: 250px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.form button {
+    background: var(--submit-btn);
+    cursor: pointer;
+}
+.message {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.todo-item {
+    background: var(--item-bg);
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 /*
@@ -18,9 +67,9 @@ body {
 ------------*/
 footer {
     text-align: center;
-    color: gray;
+    color: #808080;
 }
 footer a {
-    color: black;
+    color: #cacaca;
     text-decoration: none;
 }
