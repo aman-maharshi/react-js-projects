@@ -20,13 +20,19 @@ body {
     min-height: calc(100vh - 80px);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 .app {
     background: var(--card-bg);
     padding: 1rem;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 6px 8px;
+    margin-top: 8rem;
+}
+@media (max-width: 576px) {
+    .app {
+        margin-top: 4rem;
+    }
 }
 .form {
     position: relative;
@@ -38,12 +44,26 @@ body {
     font-size: 1rem;
     padding: 10px 1rem;
     border-radius: 5px;
+    width: 65px;
 }
 
 .form input {
     margin-right: 1rem;
-    min-width: 250px;
+    min-width: 300px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.form input:active,
+.form input:focus,
+.form input:focus-visible {
+    border: none;
+    outline: none;
+}
+
+@media (max-width: 576px) {
+    .form input {
+        min-width: 225px;
+    }
 }
 .form button {
     background: var(--submit-btn);
