@@ -1,9 +1,10 @@
 import { GrEdit, GrTrash } from "react-icons/gr"
 
-const List = ({ shoppingList, setShoppingList, setUserInput, setEditItemId }) => {
+const List = ({ shoppingList, setShoppingList, setUserInput, setEditItemId, setMessage }) => {
     const handleDelete = deleteId => {
         const remainingItems = shoppingList.filter(item => item.id !== deleteId)
         setShoppingList(remainingItems)
+        setMessage("Item Removed")
     }
 
     const handleEdit = editId => {

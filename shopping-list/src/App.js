@@ -1,12 +1,20 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import List from "./List"
 
 function App() {
-    const [showMessage, setShowMessage] = useState(false)
-    const [message, setMessage] = useState("message")
+    const [message, setMessage] = useState("")
     const [userInput, setUserInput] = useState("")
     const [editItemId, setEditItemId] = useState(null)
     const [shoppingList, setShoppingList] = useState([{ id: 3123, name: "Bread" }, { id: 2234, name: "Milk" }])
+
+    // hiding the message after 1 seconds
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setMessage("")
+        }, 1000)
+
+        return () => clearTimeout(timeout)
+    }, [message])
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -14,7 +22,9 @@ function App() {
         if (!editItemId && userInput) {
             // new item
             setShoppingList([...shoppingList, { id: Math.floor(Math.random() * 10000), name: userInput }])
+
             setUserInput("")
+            setMessage("Item Added")
         } else if (editItemId && userInput) {
             // editing existing item
             const editableObject = shoppingList.filter(item => item.id === editItemId)[0]
@@ -24,6 +34,7 @@ function App() {
 
             setEditItemId(null)
             setUserInput("")
+            setMessage("Item Changed")
         }
     }
 
@@ -31,14 +42,14 @@ function App() {
         <>
             <div className="page-content">
                 <div className="app">
-                    <h3>Shopping List</h3>
+                    <h3>Grocery List</h3>
                     <form className="form" onSubmit={handleSubmit}>
                         <input type="text" value={userInput} onChange={e => setUserInput(e.target.value)} />
                         <button type="submit">{editItemId ? "Save" : "Add"}</button>
-                        {showMessage && <div className="message">{message}</div>}
+                        {message && <div className="message">{message}</div>}
                     </form>
 
-                    <List shoppingList={shoppingList} setShoppingList={setShoppingList} setUserInput={setUserInput} setEditItemId={setEditItemId} />
+                    <List shoppingList={shoppingList} setShoppingList={setShoppingList} setUserInput={setUserInput} setEditItemId={setEditItemId} setMessage={setMessage} />
                 </div>
             </div>
             <footer>
