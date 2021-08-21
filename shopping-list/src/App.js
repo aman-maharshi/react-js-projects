@@ -33,9 +33,10 @@ function App() {
         } else if (editItemId && userInput) {
             // editing existing item
             const editableObject = shoppingList.filter(item => item.id === editItemId)[0]
-            const list = shoppingList
+            const list = [...shoppingList]
             const index = list.indexOf(editableObject)
             list.splice(index, 1, { id: editItemId, name: userInput })
+            setShoppingList(list)
 
             setEditItemId(null)
             setUserInput("")
