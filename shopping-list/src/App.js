@@ -5,7 +5,7 @@ function App() {
     const [message, setMessage] = useState("")
     const [userInput, setUserInput] = useState("")
     const [editItemId, setEditItemId] = useState(null)
-    const [shoppingList, setShoppingList] = useState([{ id: 3123, name: "Bread" }, { id: 2234, name: "Milk" }])
+    const [shoppingList, setShoppingList] = useState(JSON.parse(localStorage.getItem("shoppingList")) !== null ? JSON.parse(localStorage.getItem("shoppingList")) : [{ id: 3123, name: "Bread" }, { id: 2234, name: "Milk" }])
 
     // hiding the message after 1 seconds
     useEffect(() => {
@@ -16,12 +16,17 @@ function App() {
         return () => clearTimeout(timeout)
     }, [message])
 
+    // saving shoppingList to localStorage on change
+    useEffect(() => {
+        localStorage.setItem("shoppingList", JSON.stringify(shoppingList))
+    }, [shoppingList])
+
     const handleSubmit = e => {
         e.preventDefault()
 
         if (!editItemId && userInput) {
             // new item
-            setShoppingList([...shoppingList, { id: Math.floor(Math.random() * 10000), name: userInput }])
+            setShoppingList([...shoppingList, { id: new Date().getTime().toString(), name: userInput }])
 
             setUserInput("")
             setMessage("Item Added")
@@ -50,6 +55,11 @@ function App() {
                     </form>
 
                     <List shoppingList={shoppingList} setShoppingList={setShoppingList} setUserInput={setUserInput} setEditItemId={setEditItemId} setMessage={setMessage} />
+                    {shoppingList.length > 1 && (
+                        <button className="clear-btn" onClick={() => setShoppingList([])}>
+                            Clear Items
+                        </button>
+                    )}
                 </div>
             </div>
             <footer>

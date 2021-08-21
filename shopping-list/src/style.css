@@ -97,6 +97,16 @@ body {
     margin-right: 1rem;
 }
 
+.clear-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+    display: block;
+    margin: 0 auto;
+}
+
 /*
     FOOTER
 ------------*/
