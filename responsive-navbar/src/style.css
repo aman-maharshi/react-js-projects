@@ -3,7 +3,7 @@
 body {
     margin: 0;
     font-family: "Lato", sans-serif;
-    color: #202142;
+    color: #262626;
 }
 
 *,
@@ -24,27 +24,28 @@ ul {
 
 .page-content {
     min-height: calc(100vh - 60px);
+    background: #fafafa;
 }
 
 /*
     NAVBAR
 -------------*/
 nav {
-    padding: 1rem 5rem;
+    padding: 10px 5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #fcfcff;
-    border-bottom: 2px solid #efefff;
+    background: white;
+    border-bottom: 2px solid #ececec;
 }
 @media (max-width: 992px) {
     nav {
-        padding: 1rem 3rem;
+        padding: 10px 3rem;
     }
 }
 @media (max-width: 768px) {
     nav {
-        padding: 1rem 2rem;
+        padding: 10px 2rem;
     }
 }
 @media (max-width: 576px) {
@@ -55,7 +56,7 @@ nav {
 }
 
 h1 {
-    color: #202142;
+    color: #262626;
 }
 
 .nav-links {
@@ -75,15 +76,15 @@ h1 {
 }
 .nav-links a {
     padding: 10px 0;
-    color: #202142;
+    color: #262626;
     font-size: 1.1rem;
     position: relative;
 }
 .nav-links a::after {
     content: "";
-    height: 3px;
+    height: 2px;
     width: 100%;
-    background: #4584b1;
+    background: #0095f6;
     border-radius: 25px;
     position: absolute;
     left: 0;
@@ -95,14 +96,34 @@ h1 {
     transform: scaleX(100%);
 }
 
+.toggle-btn {
+    display: none;
+}
+
 @media (max-width: 576px) {
     .mobile-header {
         border-bottom: 2px solid #efefff;
         width: 100%;
         text-align: center;
     }
-    .mobile-menu {
+    .toggle-btn {
+        display: block;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        font-size: 1.5rem;
+        border: none;
+        background: none;
+        color: #262626;
+    }
+    .menu {
+        transition: all 0.3s ease;
         width: 100%;
+    }
+    .menu-hide {
+        position: absolute;
+        top: 71px;
+        transform: translateX(-100%);
     }
 }
 
@@ -110,17 +131,18 @@ h1 {
     FOOTER
 ------------*/
 footer {
+    background: #fafafa;
     text-align: center;
-    color: #b3b3b3;
+    color: #b3b1b1;
     padding: 1rem;
 }
 footer p {
     margin: 0;
 }
 footer a {
-    color: #719cbb;
+    color: #b3b1b1;
     transition: color 0.3s ease;
 }
 footer a:hover {
-    color: #4584b1;
+    color: #262626;
 }
