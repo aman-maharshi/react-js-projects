@@ -1,8 +1,17 @@
+import Navbar from "./Navbar"
+
 function App() {
     return (
-        <div>
-            <p>Hello there!</p>
-        </div>
+        <>
+            <main className="page-content">
+                <Navbar />
+            </main>
+            <footer>
+                <p>
+                    Designed and Coded by <a href="https://github.com/aman-maharshi">Aman Maharshi</a>
+                </p>
+            </footer>
+        </>
     )
 }
 

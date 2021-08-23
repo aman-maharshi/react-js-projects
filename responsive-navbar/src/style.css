@@ -1,4 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
 body {
     margin: 0;
-    background: lightcyan;
+    font-family: "Lato", sans-serif;
+    color: #202142;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.page-content {
+    min-height: calc(100vh - 60px);
+}
+
+/*
+    NAVBAR
+-------------*/
+nav {
+    padding: 1rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fcfcff;
+    border-bottom: 2px solid #efefff;
+}
+@media (max-width: 992px) {
+    nav {
+        padding: 1rem 3rem;
+    }
+}
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem 2rem;
+    }
+}
+@media (max-width: 576px) {
+    nav {
+        padding: 0;
+        flex-direction: column;
+    }
+}
+
+h1 {
+    color: #202142;
+}
+
+.nav-links {
+    display: flex;
+}
+.nav-links li {
+    margin: 0 1rem;
+}
+@media (max-width: 576px) {
+    .nav-links {
+        flex-direction: column;
+    }
+    .nav-links li {
+        margin: 1rem;
+        text-align: center;
+    }
+}
+.nav-links a {
+    padding: 10px 0;
+    color: #202142;
+    font-size: 1.1rem;
+    position: relative;
+}
+.nav-links a::after {
+    content: "";
+    height: 3px;
+    width: 100%;
+    background: #4584b1;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: 0.3s;
+    transform: scaleX(0);
+}
+.nav-links a:hover::after {
+    transform: scaleX(100%);
+}
+
+@media (max-width: 576px) {
+    .mobile-header {
+        border-bottom: 2px solid #efefff;
+        width: 100%;
+        text-align: center;
+    }
+    .mobile-menu {
+        width: 100%;
+    }
+}
+
+/*
+    FOOTER
+------------*/
+footer {
+    text-align: center;
+    color: #b3b3b3;
+    padding: 1rem;
+}
+footer p {
+    margin: 0;
+}
+footer a {
+    color: #719cbb;
+    transition: color 0.3s ease;
+}
+footer a:hover {
+    color: #4584b1;
 }
