@@ -15,11 +15,21 @@ body {
 .pageOptions {
     padding: 1rem;
     background: lightgray;
+    display: flex;
+    justify-content: center;
+    border: none;
 }
-.pageOptions select {
+.pageOptions select,
+input {
     font-family: "Poppins", sans-serif;
     outline: none;
     width: 100px;
+    font-size: 1rem;
+    margin: 0 1rem;
+}
+.pageOptions input {
+    width: 200px;
+    padding: 5px;
 }
 
 .pageContent {

@@ -28,6 +28,25 @@ const App = () => {
         }
     }
 
+    const handleSearch = e => {
+        const searchInput = e.target.value.toLowerCase()
+        if (searchInput) {
+            const filteredUsers = data.filter(user => {
+                const userName = (user.name.first + " " + user.name.last).toLowerCase()
+                const city = user.location.city.toLowerCase()
+                const country = user.location.country.toLowerCase()
+                if (userName.includes(searchInput) || city.includes(searchInput) || country.includes(searchInput)) {
+                    return true
+                } else {
+                    return false
+                }
+            })
+            setData(filteredUsers)
+        } else {
+            setData(dataCopy)
+        }
+    }
+
     return (
         <div className="page">
             <h2 className="pageTitle">People</h2>
@@ -37,6 +56,7 @@ const App = () => {
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
+                <input onChange={handleSearch} type="text" placeholder="Search..." />
             </div>
             <div className="pageContent">
                 {data ? (
@@ -58,6 +78,7 @@ const App = () => {
                 ) : (
                     <div className="spinner"></div>
                 )}
+                {data && data.length === 0 ? "Not found" : null}
             </div>
         </div>
     )
