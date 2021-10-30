@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.pageTitle {
+    text-align: center;
+}
+.pageOptions {
+    padding: 1rem;
+    background: lightgray;
+}
+.pageOptions select {
+    font-family: "Poppins", sans-serif;
+    outline: none;
+    width: 100px;
+}
+
+.pageContent {
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 1rem auto;
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (max-width: 992px) {
+    .pageContent {
+        grid-gap: 1rem;
+    }
+}
+
+.card {
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+.cardLeft {
+    max-width: 70%;
+    word-break: break-all;
+}
+.cardRight {
+    display: flex;
+    align-items: center;
+}
+.cardRight img {
+    border-radius: 50%;
+}
+
+.maleHighlight {
+    border: 5px solid rgb(67, 164, 255);
+}
+.femaleHighlight {
+    border: 5px solid rgb(255, 91, 119);
+}
+
+/*
+  SPINNER
+--------------*/
+.spinner {
+    height: 50px;
+    width: 50px;
+    border: 5px solid lightgray;
+    border-top: 5px solid rgb(255, 86, 114);
+    border-radius: 50%;
+    margin-left: 50%;
+    margin-top: 15rem;
+    transform: translateX(-50%);
+    animation: spin 0.5s linear infinite;
+}
+@media (max-width: 768px) {
+    .spinner {
+        margin-top: 10rem;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
