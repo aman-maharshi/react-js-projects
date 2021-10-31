@@ -18,6 +18,7 @@
 
 #### API Projects - Apps using data from external APIs
 
+1. [Gallery Search and Filter](https://aman-maharshi.github.io/react-js-projects/gallery-search-and-filter/build/)
 1. [Tour Finder](https://aman-maharshi.github.io/react-js-projects/tours/build/)
 1. [Vertical Tabs](https://aman-maharshi.github.io/react-js-projects/vertical-tabs/build/)
 1. [Pagination](https://aman-maharshi.github.io/react-js-projects/pagination/build/)
