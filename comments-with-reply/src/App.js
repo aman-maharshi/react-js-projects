@@ -2,7 +2,7 @@ import Comments from "./Comments"
 
 const App = () => {
     return (
-        <div>
+        <div className="appWrapper">
             <h1>Lorem, ipsum dolor.</h1>
             <Comments userId="1" />
         </div>
