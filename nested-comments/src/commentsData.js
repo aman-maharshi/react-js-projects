@@ -1,28 +1,28 @@
 export default [
     {
         child_comments: [{
-            description: "In the End",
-            parent_id: "CfFPPMpPTvbfgnYQApXS",
-            _id: "CbGjVzqKMOfSeK6eBrGJ"
+            description: "I dont know why",
+            parent_id: 1,
+            _id: 11
         }],
-        description: "Lorem Ipsum",
+        description: "It starts with one thing",
         parent_id: "",
-        _id: "CfFPPMpPTvbfgnYQApXS"
+        _id: 1
     },
     {
         child_comments: [{
             description: "Papercut",
-            parent_id: "CUhfR3fdj78ufLvpNF5T",
-            _id: "CtsRLcIv9xgGkY3P6wHZ"
+            parent_id: 2,
+            _id: 21
         }],
-        description: "It starts with",
+        description: "In the end",
         parent_id: "",
-        _id: "CUhfR3fdj78ufLvpNF5T"
+        _id: 2
 
     },
     {
         description: "One step closer",
         parent_id: "",
-        _id: "C2iHpLlLg3KYpUgAGNSS"
+        _id: 3
     }
 ]

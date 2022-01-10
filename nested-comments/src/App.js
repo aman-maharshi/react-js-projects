@@ -10,40 +10,46 @@ function App() {
     e.preventDefault()
 
     if (newComment) {
-      console.log(newComment, "new_comment")
-      console.log("", "parent_id")
+      const newCommentData = {
+        description: newComment,
+        parent_id: "",
+        _id: Math.floor(Math.random() * 99999)
+      }
+
+      setAllComments([...allComments, newCommentData])
+   
       setNewComment("")
     }
 }
 
   return (
     <>
-    <main className="main">
-      <div className="commentsWrapper">
-        <div className="addComment">
-            <div className="commentImage">
-              <img src="/images/userLogo.jpeg" alt="comment-user"></img>
-            </div>
-            <form onSubmit={handleNewCommentSubmit} className="commentForm">
-                <textarea value={newComment} onChange={e => setNewComment(e.target.value)} placeholder="Add a comment..."></textarea>
-                <button type="submit">Comment</button>
-            </form>
+      <main className="main">
+        <div className="commentsWrapper">
+          <div className="addComment">
+              <div className="commentImage">
+                <img src="/images/userLogo.jpeg" alt="comment-user"></img>
+              </div>
+              <form onSubmit={handleNewCommentSubmit} className="commentForm">
+                  <textarea value={newComment} onChange={e => setNewComment(e.target.value)} placeholder="Add a comment..."></textarea>
+                  <button type="submit">Comment</button>
+              </form>
+          </div>
+              
+          <div className="commentsList">
+              {allComments.length ? (
+                  allComments.map(item => {
+                      return <Comment key={item._id} item={item} allComments={allComments} setAllComments={setAllComments} />
+                  })
+              ) : (
+                  <p>No comments</p>
+              )}
+          </div>
         </div>
-            
-        <div className="commentsList">
-            {allComments.length ? (
-                allComments.map(item => {
-                    return <Comment key={item._id} item={item} />
-                })
-            ) : (
-                <p>No comments</p>
-            )}
-        </div>
-      </div>
-    </main>
-    <footer>
-		  <p>Designed and Coded by <a href="https://amanmaharshi.com" target="_blank">Aman Maharshi</a></p>
-	  </footer>
+      </main>
+      <footer>
+        <p>Designed and Coded by <a href="https://amanmaharshi.com" target="_blank">Aman Maharshi</a></p>
+      </footer>
     </>
   )
 }

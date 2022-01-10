@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-const Comment = ({ item, getComments }) => {
-    const { _id, show_username, description, profile_image_url, engagement, _reacted, child_comments } = item
+const Comment = ({ item, allComments, setAllComments }) => {
+    const { _id, description, child_comments, parent_id } = item
 
     const [reply, setReply] = useState("")
     const [showReplyForm, setShowReplyForm] = useState(false) 
@@ -14,9 +14,14 @@ const Comment = ({ item, getComments }) => {
         e.preventDefault()
 
         if (reply) {
-            console.log(reply, "reply")
-            console.log(_id, "parent_id")
-            
+            const newCommentData = {
+                description: reply,
+                parent_id: _id,
+                _id: Math.floor(Math.random() * 99999)
+            }
+            console.log(_id, "_id")
+            console.log(parent_id, "parent_id")
+        
             setReply("")
             toggleReplyForm()
         }
@@ -57,7 +62,7 @@ const Comment = ({ item, getComments }) => {
             {child_comments && child_comments.length ? (
                 <div className="childCommentWrapper">
                     {child_comments.map(nestedItem => (
-                        <Comment key={nestedItem._id} item={nestedItem} getComments={getComments} />
+                        <Comment key={nestedItem._id} item={nestedItem} allComments={allComments} setAllComments={setAllComments} />
                     ))}
                 </div>
             ) : null}
