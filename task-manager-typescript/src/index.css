@@ -10,3 +10,8 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.custom-input-focus:focus {
+    box-shadow: 0 0 10px 1000px rgba(0, 0, 0, 0.75);
+    outline: none;
+}
