@@ -1,8 +1,16 @@
-const InputField = () => {
+import { useRef } from "react"
+interface Props {
+    todo: string
+    setTodo: React.Dispatch<React.SetStateAction<string>>
+    handleAdd: (e: React.FormEvent) => void
+    inputRef: React.RefObject<HTMLInputElement>
+}
+
+const InputField: React.FC<Props> = ({ todo, setTodo, handleAdd, inputRef }) => {
     return (
-        <form className="w-80 border relative">
-            <input type="text" className="w-full border p-2 w-60 custom-input-focus pr-24" />
-            <button type="submit" className="absolute bg-white right-0 top-0 z-10 text-center p-2 w-20 border border-solid">
+        <form onSubmit={handleAdd} className="w-full relative mb-4">
+            <input ref={inputRef} value={todo} onChange={e => setTodo(e.target.value)} type="text" className="w-full bg-white p-2 pr-24 custom-input-focus" />
+            <button type="submit" className="absolute font-bold text-white bg-teal-500 right-0 top-0 z-10 text-center p-2 w-20">
                 Add
             </button>
         </form>
