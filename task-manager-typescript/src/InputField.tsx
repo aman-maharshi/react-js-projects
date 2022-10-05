@@ -6,7 +6,7 @@ interface Props {
     inputRef: React.RefObject<HTMLInputElement>
 }
 
-const InputField: React.FC<Props> = ({ todo, setTodo, handleAdd, inputRef }) => {
+const InputField = ({ todo, setTodo, handleAdd, inputRef }: Props) => {
     return (
         <form onSubmit={handleAdd} className="w-full relative mb-4">
             <input ref={inputRef} value={todo} onChange={e => setTodo(e.target.value)} type="text" className="w-full bg-white p-2 pr-24 custom-input-focus" />

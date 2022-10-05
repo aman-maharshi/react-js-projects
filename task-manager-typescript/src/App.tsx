@@ -2,6 +2,7 @@ import { useState, useRef } from "react"
 import InputField from "./InputField"
 import "./index.css"
 import { Todo } from "./model"
+import SingleTodo from "./SingleTodo"
 
 const App: React.FC = () => {
     const [todo, setTodo] = useState<string>("")
@@ -33,11 +34,7 @@ const App: React.FC = () => {
                 <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} inputRef={inputRef} />
 
                 {todos.map(item => {
-                    return (
-                        <div key={item.id} className="mb-2 p-2 bg-yellow-200 border-b-2 border-yellow-500">
-                            {item.text}
-                        </div>
-                    )
+                    return <SingleTodo key={item.id} item={item} todos={todos} setTodos={setTodos}/>
                 })}
             </div>
         </div>
