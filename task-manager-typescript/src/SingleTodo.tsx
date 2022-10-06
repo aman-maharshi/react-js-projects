@@ -9,17 +9,35 @@ interface Props {
 }
 
 const SingleTodo = ({ item, todos, setTodos }: Props) => {
+
+    const handleDelete = () => {
+        setTodos(todos.filter(listItem => listItem.id !== item.id ))
+    }
+
+    const toggleCompleted = () => {
+      setTodos(todos.map(listItem => {
+          if (listItem.id === item.id) {
+              return {
+                  ...listItem,
+                  completed: !listItem.completed
+              }
+          } else {
+              return listItem
+          }
+      }))
+    }
+
     return (
         <div className="mb-2 p-2 bg-yellow-200 border-b-2 border-yellow-500 flex justify-between">
-            <div className="flex-1 truncate">{item.text}</div>
+            <div className={item.completed ?"flex-1 truncate line-through" : "flex-1 truncate" }>{item.text}</div>
             <div>
                 <button className="text-xl">
                     <MdEdit />
                 </button>
-                <button className="text-xl mx-4">
+                <button onClick={handleDelete} className="text-xl mx-4">
                     <MdDelete />
                 </button>
-                <button className="text-xl">
+                <button onClick={toggleCompleted} className="text-xl">
                     <MdCheck />
                 </button>
             </div>

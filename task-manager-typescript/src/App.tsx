@@ -1,7 +1,7 @@
 import { useState, useRef } from "react"
-import InputField from "./InputField"
 import "./index.css"
 import { Todo } from "./model"
+import InputField from "./InputField"
 import SingleTodo from "./SingleTodo"
 
 const App: React.FC = () => {
