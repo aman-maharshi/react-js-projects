@@ -10,8 +10,7 @@ const App: React.FC = () => {
     const inputRef = useRef<HTMLInputElement>(null)
 
     const handleAdd = (e: React.FormEvent) => {
-        // e.preventDefault();
-
+        e.preventDefault()
         if (todo) {
             setTodos([
                 ...todos,
