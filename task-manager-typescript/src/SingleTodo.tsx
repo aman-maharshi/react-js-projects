@@ -15,28 +15,29 @@ const SingleTodo = ({ item, todos, setTodos }: Props) => {
 
     useEffect(() => {
         if (enableEdit) {
-            if(editInputRef.current) {
+            if (editInputRef.current) {
                 editInputRef.current.focus()
             }
         }
     }, [enableEdit])
-    
 
     const handleDelete = () => {
-        setTodos(todos.filter(listItem => listItem.id !== item.id ))
+        setTodos(todos.filter((listItem) => listItem.id !== item.id))
     }
 
     const toggleCompleted = () => {
-      setTodos(todos.map(listItem => {
-          if (listItem.id === item.id) {
-              return ({
-                  ...listItem,
-                  completed: !listItem.completed
-              })
-          } else {
-              return listItem
-          }
-      }))
+        setTodos(
+            todos.map((listItem) => {
+                if (listItem.id === item.id) {
+                    return {
+                        ...listItem,
+                        completed: !listItem.completed,
+                    }
+                } else {
+                    return listItem
+                }
+            })
+        )
     }
 
     const handleEdit = () => {
@@ -45,29 +46,43 @@ const SingleTodo = ({ item, todos, setTodos }: Props) => {
         }
     }
 
-    const handleEditFormSubmit = (e:  React.FormEvent) => {
+    const handleEditFormSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         if (todoText) {
-            setTodos(todos.map(listItem => {
-                if(listItem.id === item.id) {
-                    return ({
-                        ...listItem,
-                        text: todoText
-                    })
-                } else {
-                    return listItem
-                }
-            }))
+            setTodos(
+                todos.map((listItem) => {
+                    if (listItem.id === item.id) {
+                        return {
+                            ...listItem,
+                            text: todoText,
+                        }
+                    } else {
+                        return listItem
+                    }
+                })
+            )
         }
         setEnableEdit(false)
     }
 
     return (
         <div className="mb-2 p-2 bg-yellow-200 border-b-2 border-yellow-500 flex justify-between">
-            <div className={item.completed ?"flex-1 truncate line-through" : "flex-1 truncate" }>
+            <div
+                className={
+                    item.completed
+                        ? "flex-1 truncate line-through"
+                        : "flex-1 truncate"
+                }
+            >
                 {enableEdit ? (
                     <form onSubmit={handleEditFormSubmit}>
-                        <input value={todoText} onChange={e => setTodoText(e.target.value)} ref={editInputRef} type="text" className="focus:outline-blue-500" />
+                        <input
+                            value={todoText}
+                            onChange={(e) => setTodoText(e.target.value)}
+                            ref={editInputRef}
+                            type="text"
+                            className="focus:outline-blue-500"
+                        />
                     </form>
                 ) : (
                     item.text
