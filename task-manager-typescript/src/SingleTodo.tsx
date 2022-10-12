@@ -66,7 +66,7 @@ const SingleTodo = ({ item, todos, setTodos }: Props) => {
     }
 
     return (
-        <div className="mb-2 p-2 bg-yellow-200 border-b-2 border-yellow-500 flex justify-between">
+        <div className="mb-3 p-2 bg-yellow-200 border-b-2 border-yellow-500 flex justify-between cursor-pointer transition hover:-translate-y-1 hover:shadow-md hover:bg-yellow-300">
             <div
                 className={
                     item.completed

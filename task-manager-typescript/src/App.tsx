@@ -39,16 +39,39 @@ const App: React.FC = () => {
                     inputRef={inputRef}
                 />
 
-                {todos.map((item) => {
-                    return (
-                        <SingleTodo
-                            key={item.id}
-                            item={item}
-                            todos={todos}
-                            setTodos={setTodos}
-                        />
-                    )
-                })}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                    <div className="p-4 bg-[#b0eee1] shadow-md">
+                        <h2 className="font-bold text-lg mb-4 text-[#085a51]">
+                            In Progress
+                        </h2>
+
+                        {todos.map((item) => {
+                            return (
+                                <SingleTodo
+                                    key={item.id}
+                                    item={item}
+                                    todos={todos}
+                                    setTodos={setTodos}
+                                />
+                            )
+                        })}
+                    </div>
+                    <div className="p-4 bg-[#b0eee1] shadow-md">
+                        <h2 className="font-bold text-lg mb-4 text-[#085a51]">
+                            Completed
+                        </h2>
+                        {todos.map((item) => {
+                            return (
+                                <SingleTodo
+                                    key={item.id}
+                                    item={item}
+                                    todos={todos}
+                                    setTodos={setTodos}
+                                />
+                            )
+                        })}
+                    </div>
+                </div>
             </div>
         </div>
     )
