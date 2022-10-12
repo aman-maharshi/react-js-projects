@@ -43,16 +43,16 @@ const App: React.FC = () => {
 
         if (source.droppableId === "TodoInProgress") {
             add = active[source.index]
-            active.splice(source.index, 1)
+            active.splice(source.index, 1) // remove item from source index
         } else {
             add = complete[source.index]
-            complete.splice(source.index, 1)
+            complete.splice(source.index, 1) // remove item from source index
         }
 
         if (destination.droppableId === "TodoInProgress") {
-            active.splice(destination.index, 0, add)
+            active.splice(destination.index, 0, add) // add item at destination index
         } else {
-            complete.splice(destination.index, 0, add)
+            complete.splice(destination.index, 0, add) // add item at destination index
         }
 
         setCompletedTodos(complete)
