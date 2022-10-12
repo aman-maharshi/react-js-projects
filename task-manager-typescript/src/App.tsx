@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import "./index.css"
 import { Todo } from "./model"
 import InputField from "./InputField"
@@ -7,9 +7,23 @@ import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd"
 
 const App: React.FC = () => {
     const [todo, setTodo] = useState<string>("")
-    const [todos, setTodos] = useState<Todo[]>([])
-    const [completedTodos, setCompletedTodos] = useState<Todo[]>([])
+    const lsTodos = localStorage.getItem("todos")
+    const [todos, setTodos] = useState<Todo[]>(
+        lsTodos ? JSON.parse(lsTodos) : []
+    )
+    const lsCompletedTodos = localStorage.getItem("completedTodos")
+    const [completedTodos, setCompletedTodos] = useState<Todo[]>(
+        lsCompletedTodos ? JSON.parse(lsCompletedTodos) : []
+    )
     const inputRef = useRef<HTMLInputElement>(null)
+
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos))
+    }, [todos])
+
+    useEffect(() => {
+        localStorage.setItem("completedTodos", JSON.stringify(completedTodos))
+    }, [completedTodos])
 
     const handleAdd = (e: React.FormEvent) => {
         e.preventDefault()
@@ -55,8 +69,10 @@ const App: React.FC = () => {
             complete.splice(destination.index, 0, add) // add item at destination index
         }
 
-        setCompletedTodos(complete)
         setTodos(active)
+        localStorage.setItem("todos", JSON.stringify(active))
+        setCompletedTodos(complete)
+        localStorage.setItem("completedTodos", JSON.stringify(complete))
     }
 
     return (
