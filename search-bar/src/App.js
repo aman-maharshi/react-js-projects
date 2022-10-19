@@ -18,6 +18,7 @@ const App = () => {
 
     const [searchInput, setSearchInput] = useState("")
 
+    // WITHOUT USING USEMEMO
     // const filteredPlayers = players.filter((item) => {
     //     return item
     //         .toLocaleLowerCase()
@@ -38,7 +39,7 @@ const App = () => {
             <input
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
-                className="p-2 border shadow-lg md:w-6/12 w-full text-lg rounded-lg"
+                className="p-4 border shadow-xl md:w-6/12 w-full text-lg rounded-lg"
                 placeholder="Search..."
             ></input>
 
