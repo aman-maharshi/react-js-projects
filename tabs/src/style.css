@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+
+body {
+    font-family: "Work Sans", sans-serif;
+}
+
+.wrapper {
+    margin: 1rem auto;
+    max-width: 800px;
+}
+
+.wrapper h1 {
+    text-align: center;
+}
+
+.tabs {
+    text-align: center;
+}
+.tabs button {
+    margin: 1rem;
+    font-family: "Work Sans", sans-serif;
+    background: lightgray;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 25px;
+    outline: none;
+    cursor: pointer;
+}
+
+button.active {
+    background: #e3a270;
+}
+
+@media (max-width: 576px) {
+    .tabs button {
+        margin: 10px;
+        padding: 5px 10px;
+    }
+}
+
+.collection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.collection img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin: 1rem;
+}
+
+.item-wrapper {
+    box-shadow: 1px 1px 5px lightgray;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.item-wrapper .item-details {
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,9 +1,9 @@
 # React Projects
 
 > Click on the links below to access each App
-> responsive-navbar
 
 1. [Grocery List](https://aman-maharshi.github.io/react-js-projects/shopping-list/build/)
+1. [Task Manager with Drag and Drop](https://aman-maharshi.github.io/react-js-projects/task-manager-typescript/build/)
 1. [Color Shade Generator](https://aman-maharshi.github.io/react-js-projects/color-generator/build/)
 1. [Dummy Text Generator](https://aman-maharshi.github.io/react-js-projects/dummy-text-generator/build/)
 
