@@ -18,9 +18,24 @@ body {
 }
 
 .sidebar {
-    padding: 1rem;
+    padding: 5px;
 }
 
 .editor {
     background-color: rgb(234, 234, 234);
+}
+
+.itemRow {
+    display: flex;
+    align-items: center;
+    grid-gap: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+.itemRow:hover {
+    background-color: rgb(242, 242, 242);
+}
+
+.nested {
+    margin-left: 1rem;
 }
