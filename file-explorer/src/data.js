@@ -3,24 +3,38 @@ const data = {
         id: 1,
         isFolder: true,
         children: {
-            one: {
-                id: 2,
-                isFolder: false
-            },
-            two: {
+            components: {
                 id: 3,
                 isFolder: true,
                 children: {
-                    three: {
+                    "pages.js": {
                         id: 4,
+                        isFolder: false
+                    }
+                }
+            },
+            public: {
+                id: 234,
+                isFolder: true,
+                children: {
+                    "favicon.ico": {
+                        id: 3453,
+                        isFolder: false
+                    },
+                    "logo.png": {
+                        id: 234324,
                         isFolder: false
                     }
                 }
             }
         }
     },
-    file: {
+    "index.html": {
         id: 5,
+        isFolder: false
+    },
+    "style.css": {
+        id: 6,
         isFolder: false
     }
 }

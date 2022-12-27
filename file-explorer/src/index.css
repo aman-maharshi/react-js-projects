@@ -31,6 +31,7 @@ body {
     grid-gap: 5px;
     padding: 5px;
     cursor: pointer;
+    user-select: none;
 }
 .itemRow:hover {
     background-color: rgb(242, 242, 242);
