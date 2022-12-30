@@ -45,6 +45,22 @@ const Row = ({ name, data }) => {
         setNewFileName("")
     }
 
+    // HANDLING OUTSIDE CLICK
+    const newFileRowRef = useRef()
+
+    // const handleClickOutside = e => {
+    //     if (!newFileRowRef.current.contains(e.target)) {
+    //         if (!newFileName) {
+    //             setShowAddNewFile(false)
+    //         }
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     document.addEventListener("mousedown", handleClickOutside)
+    //     return () => document.removeEventListener("mousedown", handleClickOutside)
+    // })
+
     return (
         <>
             <div className="itemRow">
@@ -65,7 +81,7 @@ const Row = ({ name, data }) => {
                 <div className="nested">
                     {/* NEW ITEM */}
                     {showAddNewFile && (
-                        <div className="newFileRow">
+                        <div className="newFileRow" ref={newFileRowRef}>
                             <AiOutlineFileText />
                             <form onSubmit={handleAddNewFile}>
                                 {/* prettier-ignore */}
