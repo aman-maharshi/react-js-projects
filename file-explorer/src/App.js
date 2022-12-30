@@ -14,7 +14,11 @@ const App = () => {
                     return <Row key={index} name={item} data={data[item]} />
                 })}
             </div>
-            <div className="editor"></div>
+            <div className="editor">
+                <h2>Features</h2>
+                <p>Show and Hide folder content by clicking on the folder name</p>
+                <p>Create a new file inside a folder</p>
+            </div>
         </div>
     )
 }

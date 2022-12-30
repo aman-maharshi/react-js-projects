@@ -1,29 +1,87 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { BsFolder, BsFolderFill } from "react-icons/bs"
-import { AiOutlineFileText } from "react-icons/ai"
+import { AiOutlineFileText, AiFillFileAdd } from "react-icons/ai"
 
 const Row = ({ name, data }) => {
-    // console.log(data)
     const [showFolderContent, setShowFolderContent] = useState(true)
+    const [rowData, setRowData] = useState(data)
+    const [showAddNewFile, setShowAddNewFile] = useState(false)
+    const [newFileName, setNewFileName] = useState("")
+    const newFileNameRef = useRef(null)
+    // console.log(rowData)
+
+    useEffect(() => {
+        if (showAddNewFile) {
+            if (newFileNameRef.current) {
+                newFileNameRef.current.focus()
+            }
+        }
+    }, [showAddNewFile])
 
     const handleFolderClick = () => {
-        if (data.isFolder) {
+        if (rowData.isFolder) {
             setShowFolderContent(prev => !prev)
         }
     }
 
+    const toggleAddFile = () => {
+        setShowAddNewFile(prev => !prev)
+    }
+
+    const handleAddNewFile = () => {
+        if (newFileName) {
+            setRowData({
+                ...rowData,
+                children: {
+                    ...rowData.children,
+                    [newFileName]: {
+                        id: Date.now(),
+                        isFolder: false
+                    }
+                }
+            })
+        }
+        setShowAddNewFile(false)
+        setNewFileName("")
+    }
+
     return (
         <>
-            <div className="itemRow" onClick={handleFolderClick}>
-                {data.isFolder ? <BsFolderFill /> : <AiOutlineFileText />}
-                <div>{name}</div>
+            <div className="itemRow">
+                <div onClick={handleFolderClick} className="itemRowLeft">
+                    {rowData.isFolder ? <BsFolderFill /> : <AiOutlineFileText />}
+                    <div>{name}</div>
+                </div>
+                <div className="itemRowRight">
+                    {rowData.isFolder && (
+                        <div onClick={toggleAddFile} className="addFile">
+                            <AiFillFileAdd />
+                        </div>
+                    )}
+                </div>
             </div>
 
             {showFolderContent && (
                 <div className="nested">
-                    {data.children &&
-                        Object.keys(data.children).map((item, index) => {
-                            return <Row key={index} name={item} data={data.children[item]} />
+                    {/* NEW ITEM */}
+                    {showAddNewFile && (
+                        <div className="newFileRow">
+                            <AiOutlineFileText />
+                            <form onSubmit={handleAddNewFile}>
+                                {/* prettier-ignore */}
+                                <input 
+                                    type="text" 
+                                    value={newFileName} 
+                                    ref={newFileNameRef} 
+                                    onChange={e => setNewFileName(e.target.value)} 
+                                />
+                            </form>
+                        </div>
+                    )}
+                    {/* EXISTING ITEMS*/}
+                    {rowData.children &&
+                        Object.keys(rowData.children).map((item, index) => {
+                            return <Row key={index} name={item} data={rowData.children[item]} />
                         })}
                 </div>
             )}
