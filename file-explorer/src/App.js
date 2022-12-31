@@ -16,8 +16,12 @@ const App = () => {
             </div>
             <div className="editor">
                 <h2>Features</h2>
+                <p>Create nested folders</p>
+                <p>Create nested files inside a folder</p>
                 <p>Show and Hide folder content by clicking on the folder name</p>
-                <p>Create a new file inside a folder</p>
+
+                {/* <h2>Issues</h2>
+                <p>Save the nested changes to the global state</p> */}
             </div>
         </div>
     )

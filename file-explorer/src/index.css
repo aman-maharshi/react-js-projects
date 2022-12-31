@@ -23,7 +23,7 @@ body {
 
 .editor {
     background-color: rgb(234, 234, 234);
-    padding: 2rem;
+    padding: 0 2rem;
 }
 
 .itemRow {
@@ -41,6 +41,11 @@ body {
 }
 .itemRow:hover {
     background-color: rgb(242, 242, 242);
+}
+.itemRowRight {
+    display: flex;
+    align-items: center;
+    grid-gap: 10px;
 }
 
 .addFile {

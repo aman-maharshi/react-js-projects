@@ -1,13 +1,19 @@
 import { useState, useEffect, useRef } from "react"
 import { BsFolder, BsFolderFill } from "react-icons/bs"
-import { AiOutlineFileText, AiFillFileAdd } from "react-icons/ai"
+import { AiOutlineFileText } from "react-icons/ai"
+import { RiFolderAddFill, RiFileAddLine } from "react-icons/ri"
 
 const Row = ({ name, data }) => {
     const [showFolderContent, setShowFolderContent] = useState(true)
     const [rowData, setRowData] = useState(data)
+
     const [showAddNewFile, setShowAddNewFile] = useState(false)
     const [newFileName, setNewFileName] = useState("")
     const newFileNameRef = useRef(null)
+
+    const [showAddNewFolder, setShowAddNewFolder] = useState(false)
+    const [newFolderName, setNewFolderName] = useState("")
+    const newFolderNameRef = useRef(null)
     // console.log(rowData)
 
     useEffect(() => {
@@ -17,6 +23,14 @@ const Row = ({ name, data }) => {
             }
         }
     }, [showAddNewFile])
+
+    useEffect(() => {
+        if (showAddNewFolder) {
+            if (newFolderNameRef.current) {
+                newFolderNameRef.current.focus()
+            }
+        }
+    }, [showAddNewFolder])
 
     const handleFolderClick = () => {
         if (rowData.isFolder) {
@@ -45,7 +59,29 @@ const Row = ({ name, data }) => {
         setNewFileName("")
     }
 
-    // HANDLING OUTSIDE CLICK
+    const toggleAddFolder = () => {
+        setShowAddNewFolder(prev => !prev)
+    }
+
+    const handleAddNewFolder = () => {
+        if (newFolderName) {
+            setRowData({
+                ...rowData,
+                children: {
+                    ...rowData.children,
+                    [newFolderName]: {
+                        id: Date.now(),
+                        isFolder: true,
+                        children: {}
+                    }
+                }
+            })
+        }
+        setShowAddNewFolder(false)
+        setNewFolderName("")
+    }
+
+    // HANDLING OUTSIDE CLICK - CLOSE ADD FILE
     const newFileRowRef = useRef()
 
     // const handleClickOutside = e => {
@@ -70,16 +106,37 @@ const Row = ({ name, data }) => {
                 </div>
                 <div className="itemRowRight">
                     {rowData.isFolder && (
-                        <div onClick={toggleAddFile} className="addFile">
-                            <AiFillFileAdd />
-                        </div>
+                        <>
+                            <div onClick={toggleAddFolder} className="addFile">
+                                <RiFolderAddFill />
+                            </div>
+                            <div onClick={toggleAddFile} className="addFile">
+                                <RiFileAddLine />
+                            </div>
+                        </>
                     )}
                 </div>
             </div>
 
             {showFolderContent && (
                 <div className="nested">
-                    {/* NEW ITEM */}
+                    {/* NEW FOLDER */}
+                    {showAddNewFolder && (
+                        <div className="newFileRow">
+                            <BsFolderFill />
+                            <form onSubmit={handleAddNewFolder}>
+                                {/* prettier-ignore */}
+                                <input 
+                                    type="text" 
+                                    value={newFolderName} 
+                                    ref={newFolderNameRef} 
+                                    onChange={e => setNewFolderName(e.target.value)} 
+                                />
+                            </form>
+                        </div>
+                    )}
+
+                    {/* NEW FILE */}
                     {showAddNewFile && (
                         <div className="newFileRow" ref={newFileRowRef}>
                             <AiOutlineFileText />
@@ -94,7 +151,8 @@ const Row = ({ name, data }) => {
                             </form>
                         </div>
                     )}
-                    {/* EXISTING ITEMS*/}
+
+                    {/* EXISTING ITEMS */}
                     {rowData.children &&
                         Object.keys(rowData.children).map((item, index) => {
                             return <Row key={index} name={item} data={rowData.children[item]} />

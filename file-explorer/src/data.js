@@ -4,38 +4,40 @@ const data = {
         isFolder: true,
         children: {
             components: {
-                id: 3,
+                id: 12,
                 isFolder: true,
                 children: {
-                    "pages.js": {
-                        id: 4,
+                    "topbar.js": {
+                        id: 123,
+                        isFolder: false
+                    }
+                }
+            },
+            pages: {
+                id: 13,
+                isFolder: true,
+                children: {
+                    "home.js": {
+                        id: 131,
                         isFolder: false
                     }
                 }
             },
             public: {
-                id: 234,
+                id: 14,
                 isFolder: true,
                 children: {
                     "favicon.ico": {
-                        id: 3453,
+                        id: 141,
                         isFolder: false
                     },
                     "logo.png": {
-                        id: 234324,
+                        id: 142,
                         isFolder: false
                     }
                 }
             }
         }
-    },
-    "index.html": {
-        id: 5,
-        isFolder: false
-    },
-    "style.css": {
-        id: 6,
-        isFolder: false
     }
 }
 
