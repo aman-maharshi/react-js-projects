@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-import Posts from "./components/Posts"
-import Pagination from "./components/Pagination"
+import Pagination from "./Pagination"
 
-function App() {
+const App = () => {
     const [post, setPost] = useState([])
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
-    const [postsPerPage] = useState(10)
+    const postsPerPage = 10
 
     useEffect(() => {
         fetchPosts()
@@ -15,8 +14,12 @@ function App() {
 
     const fetchPosts = async () => {
         setLoading(true)
-        const response = await axios.get("https://jsonplaceholder.typicode.com/posts")
-        setPost(response.data)
+        try {
+            const response = await axios.get("https://jsonplaceholder.typicode.com/posts")
+            setPost(response.data)
+        } catch (e) {
+            console.log(e)
+        }
         setLoading(false)
     }
 
@@ -36,7 +39,19 @@ function App() {
                     Fetching the following posts form <a href="https://jsonplaceholder.typicode.com/">JSON Placeholder</a> API
                 </p>
             </header>
-            <Posts post={currentPost} loading={loading} />
+
+            {loading ? (
+                <div className="loading">Loading...</div>
+            ) : (
+                <ul>
+                    {currentPost.map(item => (
+                        <li key={item.id}>
+                            {item.id}. {item.title}
+                        </li>
+                    ))}
+                </ul>
+            )}
+
             <Pagination postsPerPage={postsPerPage} totalPosts={post.length} paginate={paginate} />
         </div>
     )

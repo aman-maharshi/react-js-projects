@@ -46,7 +46,7 @@ li:not(:last-child) {
 }
 
 .loading {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
