@@ -13,22 +13,22 @@ body {
 }
 
 .timerRow {
-    display: grid;
-    grid-template-columns: 200px 200px 200px;
-    gap: 1rem;
-    font-size: 1.5rem;
-}
-
-input {
-    padding: 10px;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.buttonsRow {
     margin-top: 2rem;
     display: flex;
     grid-gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.time-title {
+    flex: 1;
+    margin: 0;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    font-size: 1.5rem;
+    text-align: center;
 }
 
 button {

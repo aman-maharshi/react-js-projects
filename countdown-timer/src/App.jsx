@@ -1,46 +1,61 @@
 import { useState, useEffect } from "react"
 
 const App = () => {
-    const [hours, setHours] = useState("")
-    const [minutes, setMinutes] = useState("")
-    const [seconds, setSeconds] = useState("")
+    const [minutes, setMinutes] = useState(0)
+    const [seconds, setSeconds] = useState(0)
 
-    const [timerInterval, setTimerInterval] = useState()
+    const [secondsInterval, setSecondsInterval] = useState()
     const [timerStarted, setTimerStarted] = useState(false)
 
+    useEffect(() => {
+        if (timerStarted) {
+            if (minutes) {
+                if (seconds === 0) {
+                    setSeconds(60)
+                    setMinutes(prev => prev - 1)
+                }
+            } else {
+                if (seconds === 0) {
+                    handleResetTimer()
+                }
+            }
+        }
+    }, [timerStarted, seconds, minutes])
+
     const handleStartTimer = () => {
-        if (seconds) {
+        if (seconds > 0) {
             const interval = setInterval(() => {
+                setTimerStarted(true)
                 setSeconds(prev => prev - 1)
             }, 1000)
-
-            setTimerInterval(interval)
+            setSecondsInterval(interval)
         }
     }
 
     const handlePauseTimer = () => {
+        clearInterval(secondsInterval)
         setTimerStarted(false)
     }
 
     const handleResetTimer = () => {
-        clearInterval(timerInterval)
+        clearInterval(secondsInterval)
+        setTimerStarted(false)
         setSeconds(0)
+        setMinutes(0)
     }
 
     return (
         <div className="container">
             <h1>Countdown Timer</h1>
             <div className="timerRow">
-                <p>Hours</p>
-                <p>Minutes</p>
-                <p>Seconds</p>
+                <p className="time-title">Minutes</p>
+                <p className="time-title">Seconds</p>
             </div>
             <div className="timerRow">
-                <input type="number" placeholder="00" value={hours} onChange={e => setHours(e.target.value.slice(0, 2))} />
-                <input type="number" placeholder="00" value={minutes} onChange={e => setMinutes(e.target.value.slice(0, 2))} />
-                <input type="number" placeholder="00" value={seconds} onChange={e => setSeconds(e.target.value.slice(0, 2))} />
+                <input type="number" value={minutes} onChange={e => setMinutes(e.target.value.slice(0, 2))} />
+                <input type="number" value={seconds} onChange={e => setSeconds(e.target.value.slice(0, 2))} />
             </div>
-            <div className="buttonsRow">
+            <div className="timerRow">
                 {!timerStarted ? (
                     <>
                         <button onClick={handleStartTimer}>Start</button>
