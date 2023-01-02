@@ -2,7 +2,7 @@ import React from "react"
 
 function Posts({ post, loading }) {
     if (loading) {
-        return <h2>Loading...</h2>
+        return <div className="loading">Loading...</div>
     }
     return (
         <ul>

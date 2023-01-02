@@ -6,16 +6,15 @@ function Pagination({ postsPerPage, totalPosts, paginate }) {
     for (let i = 1; i < Math.ceil(totalPosts / postsPerPage); i++) {
         pageNumbers.push(i)
     }
+
     return (
-        <ul className="pagination">
+        <div className="pagination">
             {pageNumbers.map(item => (
-                <li key={item}>
-                    <a href="#" onClick={() => paginate(item)}>
-                        {item}
-                    </a>
-                </li>
+                <div key={item} className="paginationButton" onClick={() => paginate(item)}>
+                    {item}
+                </div>
             ))}
-        </ul>
+        </div>
     )
 }
 
