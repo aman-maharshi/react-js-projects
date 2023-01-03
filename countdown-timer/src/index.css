@@ -14,7 +14,8 @@ body {
 
 .timerRow {
     margin-top: 2rem;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
     grid-gap: 1rem;
     font-size: 1.5rem;
 }
@@ -25,10 +26,16 @@ body {
 }
 
 input {
-    flex: 1;
     padding: 10px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     text-align: center;
+}
+
+.buttonRow {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 1rem;
 }
 
 button {
