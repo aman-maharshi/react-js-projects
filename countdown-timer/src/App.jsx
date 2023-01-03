@@ -14,10 +14,10 @@ const App = () => {
                 if (minutes == 0) {
                     setMinutes(59)
                     setHours(prev => prev - 1)
-                    console.log("17")
+                    // console.log("17")
                 } else {
                     if (seconds == 0) {
-                        console.log("20")
+                        // console.log("20")
                         setSeconds(59)
                         setMinutes(prev => prev - 1)
                     }
