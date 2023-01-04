@@ -6,9 +6,11 @@ const Row = ({ data }) => {
     if (data.isFolder) {
         return (
             <div>
-                <div className="p-2 cursor-pointer hover:bg-gray-100">📁 {data.name}</div>
+                <div onClick={() => setShowFolderContent(!showFolderContent)} className="p-2 cursor-pointer select-none hover:bg-gray-100">
+                    {showFolderContent ? "📂" : "📁"} {data.name}
+                </div>
                 {showFolderContent && (
-                    <div className="ml-4">
+                    <div className="ml-4 border-l border-gray-200">
                         {data.children.map(item => {
                             return <Row key={item.id} data={item} />
                         })}
