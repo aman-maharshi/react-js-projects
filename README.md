@@ -13,14 +13,13 @@
 1. [Carousel / Slider](https://aman-maharshi.github.io/react-js-projects/carousel-slider/build/)
 1. [Accordion](https://aman-maharshi.github.io/react-js-projects/accordion/build/)
 1. [Responsive Navbar](https://aman-maharshi.github.io/react-js-projects/responsive-navbar/build/)
-1. [Multi Step Form](https://aman-maharshi.github.io/react-js-projects/multi-step-form/build/)
 1. [Sidebar](https://aman-maharshi.github.io/react-js-projects/sidebar-nav-menu/build/)
+1. [Multi Step Form](https://aman-maharshi.github.io/react-js-projects/multi-step-form/build/)
 
 #### API Projects - Apps using data from external APIs
 
 1. [Gallery Search and Filter](https://aman-maharshi.github.io/react-js-projects/gallery-search-and-filter/build/)
 1. [Pagination](https://aman-maharshi.github.io/react-js-projects/pagination/build/)
-1. [Infinite Scrolling](https://aman-maharshi.github.io/react-js-projects/infinite-scrolling/build/)
 1. [Tour Finder](https://aman-maharshi.github.io/react-js-projects/tours/build/)
 
 #### Other Projects
@@ -28,5 +27,5 @@
 1. [Dummy Text Generator](https://aman-maharshi.github.io/react-js-projects/dummy-text-generator/build/)
 1. [Layoff Manager](https://aman-maharshi.github.io/react-js-projects/layoff-manager/build/)
 1. [Search Bar](https://aman-maharshi.github.io/react-js-projects/search-bar/build/)
-1. [Reviews](https://aman-maharshi.github.io/react-js-projects/review-slider/build/)
 1. [Simple Tweet](https://aman-maharshi.github.io/react-js-projects/tweet/build/)
+1. [Reviews](https://aman-maharshi.github.io/react-js-projects/review-slider/build/)
