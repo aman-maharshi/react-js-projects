@@ -47,7 +47,7 @@ function App() {
             </div>
             <div className="mt-auto p-4 text-center md:text-2xl text-xl font-scramento">
                 Designed and coded by{" "}
-                <a className="text-amber-700 hover:text-orange-600" href="https://amanmaharshi.com" target="_blank">
+                <a className="text-amber-700 hover:text-orange-600" href="https://amanmaharshi.com" target="_blank" rel="noreferrer">
                     Aman Maharshi
                 </a>
             </div>
