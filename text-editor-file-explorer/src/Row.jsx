@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const Row = ({ data }) => {
+const Row = ({ data, handleInsertTreeNode }) => {
     const [showFolderContent, setShowFolderContent] = useState(true)
 
     const [newFileOrFolderRow, setNewFileOrFolderRow] = useState({
@@ -8,13 +8,21 @@ const Row = ({ data }) => {
         isFolder: false
     })
 
-    const handleAddNewFileOrFolder = (e, type) => {
+    const handleAddNewFileOrFolderClick = (e, type) => {
         e.stopPropagation()
         setShowFolderContent(true)
         setNewFileOrFolderRow({
             visible: true,
             isFolder: type === "folder" ? true : false
         })
+    }
+
+    const handleAddNewFileOrFolder = e => {
+        const fileName = e.target.value
+        if (e.keyCode === 13 && fileName) {
+            handleInsertTreeNode(data.id, fileName, newFileOrFolderRow.isFolder)
+            setNewFileOrFolderRow({ ...newFileOrFolderRow, visible: false })
+        }
     }
 
     if (data.isFolder) {
@@ -25,10 +33,10 @@ const Row = ({ data }) => {
                         {showFolderContent ? "📂" : "📁"} {data.name}
                     </div>
                     <div className="flex items-center">
-                        <div onClick={e => handleAddNewFileOrFolder(e, "folder")} className="p-1 text-gray-700 mr-2">
+                        <div onClick={e => handleAddNewFileOrFolderClick(e, "folder")} className="p-1 text-gray-700 mr-2">
                             + 📁
                         </div>
-                        <div onClick={e => handleAddNewFileOrFolder(e, "file")} className="p-1 text-gray-700">
+                        <div onClick={e => handleAddNewFileOrFolderClick(e, "file")} className="p-1 text-gray-700">
                             + 📄
                         </div>
                     </div>
@@ -45,6 +53,7 @@ const Row = ({ data }) => {
                                             visible: false
                                         })
                                     }
+                                    onKeyDown={handleAddNewFileOrFolder}
                                     type="text"
                                     className="ml-1 px-1"
                                     autoFocus
@@ -53,7 +62,7 @@ const Row = ({ data }) => {
                         )}
 
                         {data.children.map(item => {
-                            return <Row key={item.id} data={item} />
+                            return <Row key={item.id} data={item} handleInsertTreeNode={handleInsertTreeNode} />
                         })}
                     </div>
                 )}
