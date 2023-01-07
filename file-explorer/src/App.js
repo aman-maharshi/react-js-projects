@@ -1,3 +1,4 @@
+import { getDefaultNormalizer } from "@testing-library/react"
 import { useState } from "react"
 import jsonData from "./data"
 import Row from "./Row"
@@ -5,7 +6,17 @@ import Row from "./Row"
 const App = () => {
     const [data, setData] = useState(jsonData)
 
-    // console.log(data)
+    // const printTreeDataDfs = tree => {
+    //     console.log(tree.id)
+
+    //     if (tree.hasOwnProperty("children")) {
+    //         Object.keys(tree.children).map(item => {
+    //             return printTreeDataDfs(tree.children[item])
+    //         })
+    //     }
+    // }
+
+    // printTreeDataDfs(data.root)
 
     return (
         <div className="container">
@@ -16,9 +27,8 @@ const App = () => {
             </div>
             <div className="editor">
                 <h2>Features</h2>
-                <p>Create nested folders</p>
-                <p>Create nested files inside a folder</p>
-                <p>Show and Hide folder content by clicking on the folder name</p>
+                <p>Create nested files and folders</p>
+                <p>Show and hide folder content by clicking on the folder name</p>
 
                 {/* <h2>Issues</h2>
                 <p>Save the nested changes to the global state</p> */}

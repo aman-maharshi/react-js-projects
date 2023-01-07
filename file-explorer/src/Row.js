@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState } from "react"
 import { BsFolder, BsFolderFill } from "react-icons/bs"
 import { AiOutlineFileText } from "react-icons/ai"
 import { RiFolderAddFill, RiFileAddLine } from "react-icons/ri"
@@ -9,28 +9,10 @@ const Row = ({ name, data }) => {
 
     const [showAddNewFile, setShowAddNewFile] = useState(false)
     const [newFileName, setNewFileName] = useState("")
-    const newFileNameRef = useRef(null)
 
     const [showAddNewFolder, setShowAddNewFolder] = useState(false)
     const [newFolderName, setNewFolderName] = useState("")
-    const newFolderNameRef = useRef(null)
     // console.log(rowData)
-
-    useEffect(() => {
-        if (showAddNewFile) {
-            if (newFileNameRef.current) {
-                newFileNameRef.current.focus()
-            }
-        }
-    }, [showAddNewFile])
-
-    useEffect(() => {
-        if (showAddNewFolder) {
-            if (newFolderNameRef.current) {
-                newFolderNameRef.current.focus()
-            }
-        }
-    }, [showAddNewFolder])
 
     const handleFolderClick = () => {
         if (rowData.isFolder) {
@@ -81,22 +63,6 @@ const Row = ({ name, data }) => {
         setNewFolderName("")
     }
 
-    // HANDLING OUTSIDE CLICK - CLOSE ADD FILE
-    const newFileRowRef = useRef()
-
-    // const handleClickOutside = e => {
-    //     if (!newFileRowRef.current.contains(e.target)) {
-    //         if (!newFileName) {
-    //             setShowAddNewFile(false)
-    //         }
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     document.addEventListener("mousedown", handleClickOutside)
-    //     return () => document.removeEventListener("mousedown", handleClickOutside)
-    // })
-
     return (
         <>
             <div className="itemRow">
@@ -129,8 +95,9 @@ const Row = ({ name, data }) => {
                                 <input 
                                     type="text" 
                                     value={newFolderName} 
-                                    ref={newFolderNameRef} 
                                     onChange={e => setNewFolderName(e.target.value)} 
+                                    onBlur={() => setShowAddNewFolder(false)}
+                                    autoFocus
                                 />
                             </form>
                         </div>
@@ -138,15 +105,16 @@ const Row = ({ name, data }) => {
 
                     {/* NEW FILE */}
                     {showAddNewFile && (
-                        <div className="newFileRow" ref={newFileRowRef}>
+                        <div className="newFileRow">
                             <AiOutlineFileText />
                             <form onSubmit={handleAddNewFile}>
                                 {/* prettier-ignore */}
                                 <input 
                                     type="text" 
-                                    value={newFileName} 
-                                    ref={newFileNameRef} 
+                                    value={newFileName}  
                                     onChange={e => setNewFileName(e.target.value)} 
+                                    onBlur={() => setShowAddNewFile(false)}
+                                    autoFocus
                                 />
                             </form>
                         </div>
