@@ -28,5 +28,4 @@
 1. [Dummy Text Generator](https://aman-maharshi.github.io/react-js-projects/dummy-text-generator/build/)
 1. [Layoff Manager](https://aman-maharshi.github.io/react-js-projects/layoff-manager/build/)
 1. [Search Bar](https://aman-maharshi.github.io/react-js-projects/search-bar/build/)
-1. [Simple Tweet](https://aman-maharshi.github.io/react-js-projects/tweet/build/)
 1. [Reviews](https://aman-maharshi.github.io/react-js-projects/review-slider/build/)
