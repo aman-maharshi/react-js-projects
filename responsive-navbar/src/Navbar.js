@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <nav>
             <div className="mobile-header">
-                <a href="/#">
+                <a href="javascript:;">
                     <h1>Aman Maharshi</h1>
                 </a>
                 <button className="toggle-btn" onClick={() => setShowMobileNav(!showMobileNav)}>
@@ -16,13 +16,13 @@ const Navbar = () => {
             <div className={showMobileNav ? "menu" : "menu menu-hide"}>
                 <ul className="nav-links">
                     <li>
-                        <a href="/#">Portfolio</a>
+                        <a href="javascript:;">Portfolio</a>
                     </li>
                     <li>
-                        <a href="/#">Blog</a>
+                        <a href="javascript:;">Blog</a>
                     </li>
                     <li>
-                        <a href="/#">Contact</a>
+                        <a href="javascript:;">Contact</a>
                     </li>
                 </ul>
             </div>
