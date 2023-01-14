@@ -31,6 +31,12 @@ class UserForm extends React.Component {
         })
     }
 
+    resetSteps = () => {
+        this.setState({
+            step: 1
+        })
+    }
+
     handleFieldChange = input => e => {
         this.setState({
             [input]: e.target.value
@@ -48,7 +54,7 @@ class UserForm extends React.Component {
             case 3:
                 return <Confirm nextStep={this.nextStep} prevStep={this.prevStep} values={values} />
             case 4:
-                return <Success prevStep={this.prevStep} />
+                return <Success resetSteps={this.resetSteps} />
 
             default:
                 return <h1>An Error has occured</h1>

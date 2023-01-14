@@ -3,7 +3,7 @@ import React from "react"
 class Success extends React.Component {
     previous = e => {
         e.preventDefault()
-        this.props.prevStep()
+        this.props.resetSteps()
     }
 
     render() {
@@ -16,7 +16,7 @@ class Success extends React.Component {
                 <br />
                 <div className="form-buttons">
                     <button className="back-button" onClick={this.previous}>
-                        Back
+                        Reset
                     </button>
                 </div>
             </div>

@@ -13,6 +13,13 @@ body {
     box-sizing: border-box;
 }
 
+.appWrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .form-container {
     padding: 1rem;
     margin-top: 5rem;
@@ -60,6 +67,17 @@ button.back-button {
 .confirm-container strong {
     display: inline-block;
     min-width: 150px;
+}
+
+.footer {
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 1rem;
+    color: #021220;
+}
+
+.footer a {
+    color: #021220;
 }
 
 @media (max-width: 576px) {
