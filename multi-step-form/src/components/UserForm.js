@@ -9,7 +9,6 @@ class UserForm extends React.Component {
     state = {
         step: 1,
         firstName: "",
-        lastName: "",
         email: "",
         country: "",
         occupation: "",
@@ -38,8 +37,8 @@ class UserForm extends React.Component {
         })
     }
     render() {
-        const { step, firstName, lastName, email, country, occupation, age } = this.state
-        const values = { step, firstName, lastName, email, country, occupation, age }
+        const { step, firstName, email, country, occupation, age } = this.state
+        const values = { step, firstName, email, country, occupation, age }
 
         switch (step) {
             case 1:

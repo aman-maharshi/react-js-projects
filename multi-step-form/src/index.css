@@ -3,7 +3,9 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
-    color: #111111;
+    color: white;
+    background-image: url("../src/images/cover.svg");
+    background-size: cover;
 }
 
 * {
@@ -12,20 +14,22 @@ body {
 }
 
 .form-container {
+    padding: 1rem;
+    margin-top: 5rem;
     min-width: 375px;
 }
 
 .form-inputs {
     display: flex;
     flex-direction: column;
-    min-height: 300px;
 }
 .form-inputs input {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     padding: 10px;
     outline: none;
     border: 1px solid lightgray;
     font-size: 15px;
+    border-radius: 4px;
     color: #111111;
     background: #f3f3f3;
 }
@@ -44,12 +48,22 @@ button {
     letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: 600;
+    border-radius: 4px;
 }
 button.back-button {
     background: #edefef;
 }
 
+.confirm-container {
+    margin-bottom: 1rem;
+}
 .confirm-container strong {
     display: inline-block;
     min-width: 150px;
+}
+
+@media (max-width: 576px) {
+    .form-container {
+        margin-top: 2rem;
+    }
 }

@@ -13,6 +13,7 @@ class Success extends React.Component {
                 <div className="form-inputs">
                     <p>Thank you for your submission.</p>
                 </div>
+                <br />
                 <div className="form-buttons">
                     <button className="back-button" onClick={this.previous}>
                         Back

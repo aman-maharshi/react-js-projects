@@ -22,9 +22,6 @@ class Confirm extends React.Component {
                             <strong>First Name</strong> {values.firstName}
                         </p>
                         <p>
-                            <strong>Last Name</strong> {values.lastName}
-                        </p>
-                        <p>
                             <strong>Email</strong> {values.email}
                         </p>
                         <p>
@@ -32,9 +29,6 @@ class Confirm extends React.Component {
                         </p>
                         <p>
                             <strong>Country</strong> {values.country}
-                        </p>
-                        <p>
-                            <strong>Age</strong> {values.age}
                         </p>
                     </div>
                 </div>
