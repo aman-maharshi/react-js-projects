@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #dee2e7;
+}
+
+.sidebar-show {
+    right: 0;
+}
+.sidebar-hide {
+    right: -100%;
+}
