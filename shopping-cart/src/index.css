@@ -5,6 +5,9 @@
 body {
     background-color: #dee2e7;
 }
+#root {
+    min-height: 100vh;
+}
 
 .sidebar-show {
     right: 0;

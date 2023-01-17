@@ -1,23 +1,23 @@
 const data = [
     {
         id: 1,
-        title: "Shoes",
-        price: "₹ 3000"
+        name: "Shoes",
+        price: 3000
     },
     {
         id: 2,
-        title: "Wallet",
-        price: "₹ 1000"
+        name: "Wallet",
+        price: 1000
     },
     {
         id: 3,
-        title: "Shirt",
-        price: "₹ 1500"
+        name: "Shirt",
+        price: 1500
     },
     {
         id: 4,
-        title: "Blue Jeans",
-        price: "₹ 2000"
+        name: "Blue Jeans",
+        price: 2000
     }
 ]
 
