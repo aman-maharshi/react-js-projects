@@ -5,6 +5,7 @@ import CartContext from "./CartContext"
 import Store from "./pages/Store"
 import Cancel from "./pages/Cancel"
 import Success from "./pages/Success"
+import Sidebar from "./components/Sidebar"
 
 function App() {
     const [showCartSidebar, setShowCartSidebar] = useState(false)
@@ -50,7 +51,14 @@ function App() {
         setCart(updatedCart)
     }
 
-    const contextObject = { cart, setCart }
+    const contextObject = {
+        cart,
+        setCart,
+        showCartSidebar,
+        increaseCartQuantity,
+        decreaseCartQuantity,
+        removeItemFromCart
+    }
 
     return (
         <CartContext.Provider value={contextObject}>
@@ -70,45 +78,7 @@ function App() {
                     </Routes>
                 </BrowserRouter>
 
-                {/* ----- SIDEBAR ----- */}
-                <div className={`absolute z-10 top-0 h-full p-4 md:w-96 w-80 bg-white ease-in-out duration-300 flex flex-col ${showCartSidebar ? "sidebar-show" : "sidebar-hide"}`}>
-                    <div className="mt-20 flex-1 flex flex-col">
-                        <div>
-                            {cart.length > 0 ? (
-                                <div className="grid grid-cols-3 border-b border-gray-200 pb-2 font-bold">
-                                    <div>Item</div>
-                                    <div className="text-center">Quantity</div>
-                                    <div className="text-right">Price</div>
-                                </div>
-                            ) : (
-                                <div className="text-center">Your cart is empty!</div>
-                            )}
-                            {cart.map(item => {
-                                return (
-                                    <div key={item.id} className="grid grid-cols-3">
-                                        <div className="my-2">{item.name}</div>
-                                        <div className="my-2 flex items-center justify-center">
-                                            <button onClick={() => decreaseCartQuantity(item)} className="py-1 px-3 rounded-full border border-solid">
-                                                -
-                                            </button>
-                                            <div className="mx-2">{item.quantity}</div>
-                                            <button onClick={() => increaseCartQuantity(item)} className="py-1 px-3 rounded-full border border-solid">
-                                                +
-                                            </button>
-                                        </div>
-                                        <div className="my-2 text-right">₹ {item.price * item.quantity}</div>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                        {/* {cart.length > 0 && (
-                            <div className="mt-auto flex items-center justify-between font-bold">
-                                <div>Total</div>
-                                <div>₹ 0</div>
-                            </div>
-                        )} */}
-                    </div>
-                </div>
+                <Sidebar />
             </div>
         </CartContext.Provider>
     )
