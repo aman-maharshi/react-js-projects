@@ -4,16 +4,17 @@
 
 1. [Grocery List](https://aman-maharshi.github.io/react-js-projects/shopping-list/build/)
 1. [Task Manager with Drag and Drop](https://aman-maharshi.github.io/react-js-projects/task-manager-typescript/build/)
+1. [Shopping Cart](https://aman-maharshi.github.io/react-js-projects/shopping-cart/build/)
 1. [Text Editor File Explorer](https://aman-maharshi.github.io/react-js-projects/text-editor-file-explorer/build/)
-1. [Color Shade Generator](https://aman-maharshi.github.io/react-js-projects/color-generator/build/)
 1. [Spell Checker](https://aman-maharshi.github.io/react-js-projects/spell-checker/build/)
+1. [Color Shade Generator](https://aman-maharshi.github.io/react-js-projects/color-generator/build/)
 
 #### Web Projects - Elements used on many websites
 
 1. [Shopping Tabs](https://aman-maharshi.github.io/react-js-projects/tabs/build/)
-1. [Carousel / Slider](https://aman-maharshi.github.io/react-js-projects/carousel-slider/build/)
-1. [Accordion](https://aman-maharshi.github.io/react-js-projects/accordion/build/)
 1. [Multi Step Form](https://aman-maharshi.github.io/react-js-projects/multi-step-form/build/)
+1. [Accordion](https://aman-maharshi.github.io/react-js-projects/accordion/build/)
+1. [Carousel / Slider](https://aman-maharshi.github.io/react-js-projects/carousel-slider/build/)
 1. [Sidebar](https://aman-maharshi.github.io/react-js-projects/sidebar-nav-menu/build/)
 1. [Responsive Navbar](https://aman-maharshi.github.io/react-js-projects/responsive-navbar/build/)
 
