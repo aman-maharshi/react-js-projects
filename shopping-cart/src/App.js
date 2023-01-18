@@ -71,7 +71,7 @@ function App() {
                 </BrowserRouter>
 
                 {/* ----- SIDEBAR ----- */}
-                <div className={`absolute z-10 top-0 h-full p-4 w-96 bg-white ease-in-out duration-300 flex flex-col ${showCartSidebar ? "sidebar-show" : "sidebar-hide"}`}>
+                <div className={`absolute z-10 top-0 h-full p-4 md:w-96 w-80 bg-white ease-in-out duration-300 flex flex-col ${showCartSidebar ? "sidebar-show" : "sidebar-hide"}`}>
                     <div className="mt-20 flex-1 flex flex-col">
                         <div>
                             {cart.length > 0 ? (
@@ -85,7 +85,7 @@ function App() {
                             )}
                             {cart.map(item => {
                                 return (
-                                    <div className="grid grid-cols-3">
+                                    <div key={item.id} className="grid grid-cols-3">
                                         <div className="my-2">{item.name}</div>
                                         <div className="my-2 flex items-center justify-center">
                                             <button onClick={() => decreaseCartQuantity(item)} className="py-1 px-3 rounded-full border border-solid">
