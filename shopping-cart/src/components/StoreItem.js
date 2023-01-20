@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useContext } from "react"
 import CartContext from "../CartContext"
 
 function StoreItem({ item }) {
@@ -42,7 +42,7 @@ function StoreItem({ item }) {
                 <button onClick={addItemToCart} className="py-2 px-4 rounded-full border border-teal-500 text-teal-500">
                     Add to Cart
                 </button>
-                {itemAlreadyInCart && <p className="text-gray-500">Added to 🛒</p>}
+                {itemAlreadyInCart && <p className="text-gray-500">Added ✅</p>}
             </div>
         </div>
     )

@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import CartContext from "../CartContext"
 
 function Sidebar() {
-    const { cart, showCartSidebar, increaseCartQuantity, decreaseCartQuantity, removeItemFromCart } = useContext(CartContext)
+    const { cart, showCartSidebar, increaseCartQuantity, decreaseCartQuantity, removeItemFromCart, cartTotalValue } = useContext(CartContext)
 
     return (
         <div className={`absolute z-10 top-0 h-full p-4 md:w-96 w-80 bg-white ease-in-out duration-300 flex flex-col ${showCartSidebar ? "sidebar-show" : "sidebar-hide"}`}>
@@ -40,12 +40,15 @@ function Sidebar() {
                         )
                     })}
                 </div>
-                {/* {cart.length > 0 && (
-                            <div className="mt-auto flex items-center justify-between font-bold">
-                                <div>Total</div>
-                                <div>₹ 0</div>
-                            </div>
-                        )} */}
+                {cart.length > 0 && (
+                    <>
+                        <div className="mt-auto flex items-center justify-between font-bold">
+                            <div>Total</div>
+                            <div>₹ {cartTotalValue}</div>
+                        </div>
+                        <button className="mt-8 py-2 px-4 rounded-full text-white font-bold bg-teal-500 hover:bg-teal-700 ease-in-out duration-500">Proceed to Buy </button>
+                    </>
+                )}
             </div>
         </div>
     )

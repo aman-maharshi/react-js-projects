@@ -10,7 +10,11 @@ import Sidebar from "./components/Sidebar"
 function App() {
     const [showCartSidebar, setShowCartSidebar] = useState(false)
     const [cart, setCart] = useState([])
-    const [cartTotal, setCartTotal] = useState(0)
+    const [cartTotalValue, setCartTotalValue] = useState(0)
+
+    useEffect(() => {
+        calculateCartTotalValue()
+    }, [cart])
 
     function increaseCartQuantity(product) {
         const updatedCart = cart.map(cartItem => {
@@ -51,13 +55,23 @@ function App() {
         setCart(updatedCart)
     }
 
+    function calculateCartTotalValue() {
+        let sum = 0
+        cart.forEach(item => {
+            sum += item.price * item.quantity
+        })
+
+        setCartTotalValue(sum)
+    }
+
     const contextObject = {
         cart,
         setCart,
         showCartSidebar,
         increaseCartQuantity,
         decreaseCartQuantity,
-        removeItemFromCart
+        removeItemFromCart,
+        cartTotalValue
     }
 
     return (
