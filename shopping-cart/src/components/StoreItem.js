@@ -42,7 +42,7 @@ function StoreItem({ item }) {
                 <button onClick={addItemToCart} className="py-2 px-4 rounded-full border border-teal-500 text-teal-500">
                     Add to Cart
                 </button>
-                {itemAlreadyInCart && <p className="text-gray-500">Added ✅</p>}
+                {itemAlreadyInCart && <p className="text-gray-500">Added to 🛒</p>}
             </div>
         </div>
     )
