@@ -5,7 +5,7 @@ function Sidebar() {
     const { cart, showCartSidebar, increaseCartQuantity, decreaseCartQuantity, removeItemFromCart, cartTotalValue } = useContext(CartContext)
 
     return (
-        <div className={`absolute z-10 top-0 h-full p-4 md:w-96 w-80 bg-white ease-in-out duration-300 flex flex-col ${showCartSidebar ? "sidebar-show" : "sidebar-hide"}`}>
+        <div className={`absolute z-10 top-0 right-0 h-full p-4 md:w-96 w-80 bg-white ease-in-out duration-300 flex flex-col ${showCartSidebar ? "sidebar-show" : "sidebar-hide"}`}>
             <div className="mt-20 flex-1 flex flex-col">
                 <div>
                     {cart.length > 0 ? (
