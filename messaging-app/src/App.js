@@ -6,11 +6,8 @@ function App() {
   const [loadingChats, setLoadingChats] = useState(false)
   const [chats, setChats] = useState([])
   const [chatCopy, setChatCopy] = useState([])
-
   const [searchQuery, setSearchQuery] = useState("")
-
   const [selectedChat, setSelectedChat] = useState(null)
-  
   
   useEffect(() => {
     getChats()
@@ -24,6 +21,7 @@ function App() {
       // console.log(data)
       setChats(data)
       setChatCopy(data)
+      setSelectedChat(data[0])
     } catch(error) {
       console.log(error)
     }
@@ -42,7 +40,6 @@ function App() {
       setChats(chatCopy)
     }
   }, [searchQuery])
-
 
   return (
     <div className="wrapper">

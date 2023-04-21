@@ -4,11 +4,18 @@ function SingleChat({ selectedChat, chats, setChats }) {
     const {id, imageURL, latestMessageTimestamp, messageList, orderId, title} = selectedChat
     // console.log(messageList)
     const [newMessage, setNewMessage] = useState("")
-    const [messageListCopy, setMessageListCopy] = useState(null)
+    const [messageListCopy, setMessageListCopy] = useState([])
 
     useEffect(() => {
         setMessageListCopy(selectedChat.messageList)
     }, [selectedChat])
+
+    useEffect(() => {
+        if (messageListCopy.length > 0) {
+            scrollToBottom()
+        }
+    }, [messageListCopy])
+    
     
 
     const formatTime = (ts) => {
@@ -47,7 +54,13 @@ function SingleChat({ selectedChat, chats, setChats }) {
             setMessageListCopy([...messageListCopy, newMessageObject])
 
             setNewMessage("")
+            scrollToBottom()
         }
+    }
+
+    const scrollToBottom = () => {
+        const elementBody = document.querySelector(".messages-body")
+        elementBody.scrollTo(0, elementBody.scrollHeight)
     }
 
     return (
@@ -72,6 +85,7 @@ function SingleChat({ selectedChat, chats, setChats }) {
                         )
                     })
                 }
+                {messageListCopy.length === 0 && <div className="no-chat-messages">Send a message to start conversation</div>}
             </div>
             <form onSubmit={handleFormSubmit} className="messages-footer">
                 <input value={newMessage} onChange={e => setNewMessage(e.target.value)} type="text" placeholder="Type a message..." />
