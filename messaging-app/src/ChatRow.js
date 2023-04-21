@@ -16,7 +16,7 @@ function ChatRow({ item, setSelectedChat, selectedChat }) {
     }
     
     return (
-        <div className="chat-list__chats__row" onClick={handleConversationClick} style={id === selectedChat?.id ? {backgroundColor:"#f1f3f6"} : null}>
+        <div className="chat-list__chats__row" onClick={handleConversationClick} style={id === selectedChat?.id ? {backgroundColor:"var(--color-highlight)"} : null}>
             <div className="chats__row__image">
                 <img src={imageURL} alt="dp" />
             </div>

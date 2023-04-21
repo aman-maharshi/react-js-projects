@@ -56,6 +56,8 @@ function App() {
               )
             })
           )}
+
+          {!loadingChats && chats.length === 0 && searchQuery && <div className="chat-not-found">No chats found</div>}
         </div>
       </div>
       {selectedChat && (
