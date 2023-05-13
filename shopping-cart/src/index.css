@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 body {
-    background-color: #dee2e7;
+    background-color: #f8f6f5;
     overflow: hidden;
+    color: #22331d;
 }
 
 #root {

@@ -3,10 +3,10 @@ import CartContext from "../CartContext"
 
 function StoreItem({ item }) {
     const { cart, setCart } = useContext(CartContext)
-
     const itemAlreadyInCart = cart.find(cartItem => cartItem.id === item.id)
 
     function addItemToCart() {
+        
         if (itemAlreadyInCart) {
             const updatedCart = cart.map(cartItem => {
                 if (cartItem.id === item.id) {
@@ -42,7 +42,7 @@ function StoreItem({ item }) {
                 <button onClick={addItemToCart} className="px-2 border border-zinc-900">
                     Add to Cart +
                 </button>
-                {itemAlreadyInCart && <p className="text-gray-500">Added to 🛒</p>}
+                {itemAlreadyInCart && <p className="text-gray-500">✅</p>}
             </div>
         </div>
     )

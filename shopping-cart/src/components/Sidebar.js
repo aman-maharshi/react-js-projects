@@ -5,7 +5,7 @@ function Sidebar() {
     const { cart, showCartSidebar, increaseCartQuantity, decreaseCartQuantity, removeItemFromCart, cartTotalValue } = useContext(CartContext)
 
     return (
-        <div className={`absolute z-10 top-0 right-0 h-full p-4 md:w-96 w-80 bg-white ease-in-out duration-300 flex flex-col ${showCartSidebar ? "sidebar-show" : "sidebar-hide"}`}>
+        <div className={`absolute z-10 top-0 right-0 h-full p-4 md:w-96 w-80 bg-white ease-in-out duration-300 flex flex-col shadow-xl ${showCartSidebar ? "sidebar-show" : "sidebar-hide"}`}>
             <div className="mt-20 flex-1 flex flex-col">
                 <div>
                     {cart.length > 0 ? (
@@ -46,7 +46,7 @@ function Sidebar() {
                             <div>Total</div>
                             <div>₹ {cartTotalValue}</div>
                         </div>
-                        <button className="mt-8 py-2 px-4 rounded-full text-white font-bold bg-teal-500 hover:bg-teal-700 ease-in-out duration-500">Proceed to Buy </button>
+                        <button className="mt-8 py-2 px-4 text-white font-bold bg-zinc-900 hover:bg-zinc-700 ease-in-out duration-500">Proceed to Buy </button>
                     </>
                 )}
             </div>
