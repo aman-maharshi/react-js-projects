@@ -4,8 +4,8 @@
 
 body {
     background-color: #f8f6f5;
-    overflow: hidden;
     color: #22331d;
+    overflow-x: hidden;
 }
 
 #root {
@@ -13,9 +13,17 @@ body {
     min-height: 100vh;
 }
 
+
 .sidebar-show {
     transform: translateX(0);
 }
 .sidebar-hide {
     transform: translateX(200%);
+}
+
+
+@media (max-width: 1024px) {
+    .footer {
+        display: none;
+    }
 }

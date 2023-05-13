@@ -68,6 +68,7 @@ function App() {
         cart,
         setCart,
         showCartSidebar,
+        setShowCartSidebar,
         increaseCartQuantity,
         decreaseCartQuantity,
         removeItemFromCart,
@@ -98,6 +99,10 @@ function App() {
                 </BrowserRouter> */}
 
                 <Sidebar />
+
+                <div className="footer absolute w-full left-0 bottom-0 text-center p-4 text-zinc-400">
+                    Designed and Coded by <a href="https://amanmaharshi.com" className="font-medium hover:text-zinc-500 ease-in-out duration-500">Aman Maharshi</a>
+                </div>
             </div>
         </CartContext.Provider>
     )
