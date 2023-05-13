@@ -32,15 +32,15 @@ function StoreItem({ item }) {
     }
 
     return (
-        <div key={item.id} className="p-4 bg-white rounded-xl shadow-md">
+        <div key={item.id} className="p-4 bg-white shadow-md">
             <div className="flex items-center justify-between mb-4">
                 <p className="md:text-xl truncate">{item.name}</p>
-                <p className="md:text-xl md:p-2 p-1 rounded-full bg-teal-100">₹ {item.price}</p>
+                <p className="md:text-xl md:p-2 p-1 font-medium">₹ {item.price}</p>
             </div>
 
             <div className="flex items-center justify-between md:flex-row flex-col">
-                <button onClick={addItemToCart} className="py-2 px-4 rounded-full border border-teal-500 text-teal-500">
-                    Add to Cart
+                <button onClick={addItemToCart} className="px-2 border border-zinc-900">
+                    Add to Cart +
                 </button>
                 {itemAlreadyInCart && <p className="text-gray-500">Added to 🛒</p>}
             </div>
