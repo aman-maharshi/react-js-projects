@@ -3,11 +3,10 @@
 > Click on the links below to access each App
 
 1. [Grocery List](https://aman-maharshi.github.io/react-js-projects/shopping-list/build/)
-1. [Task Manager with Drag and Drop](https://aman-maharshi.github.io/react-js-projects/task-manager-typescript/build/)
 1. [Text Editor File Explorer](https://aman-maharshi.github.io/react-js-projects/text-editor-file-explorer/build/)
 1. [Shopping Cart](https://aman-maharshi.github.io/react-js-projects/shopping-cart/build/)
 1. [Spell Checker](https://aman-maharshi.github.io/react-js-projects/spell-checker/build/)
-1. [Color Shade Generator](https://aman-maharshi.github.io/react-js-projects/color-generator/build/)
+1. [Task Manager with Drag and Drop](https://aman-maharshi.github.io/react-js-projects/task-manager-typescript/build/)
 
 #### Web Projects - Elements used on many websites
 
@@ -21,6 +20,7 @@
 #### API Projects - Apps using data from external APIs
 
 1. [Movie Database App](https://dancing-fenglisu-6043b2.netlify.app/)
+1. [Messaging App](https://aman-maharshi.github.io/react-js-projects/messaging-app/build/)
 1. [Gallery Search and Filter](https://aman-maharshi.github.io/react-js-projects/gallery-search-and-filter/build/)
 1. [Pagination](https://aman-maharshi.github.io/react-js-projects/pagination/build/)
 1. [URL Shortner](https://aman-maharshi.github.io/react-js-projects/url-shortner/build/)
@@ -28,6 +28,7 @@
 
 #### Other Projects
 
+1. [Color Shade Generator](https://aman-maharshi.github.io/react-js-projects/color-generator/build/)
 1. [Dummy Text Generator](https://aman-maharshi.github.io/react-js-projects/dummy-text-generator/build/)
 1. [Layoff Manager](https://aman-maharshi.github.io/react-js-projects/layoff-manager/build/)
 1. [Search Bar](https://aman-maharshi.github.io/react-js-projects/search-bar/build/)
