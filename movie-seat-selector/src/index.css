@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Work Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #323B3C;
+}
+
+
+.wrapper {
+  margin: 4rem auto 0 auto; 
+  border: 1px solid lightgray;
+  max-width: 400px;
+  padding: 1rem;
+}
+
+.selector {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.selector__title {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+.selector__input-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.selector__input-row input {
+  cursor: pointer;
+  flex: 1;
+}
+
+.selector__input-row .label {
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: #CCE8E5;
+  color: #323B3C;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+}
+
+.seats {
+  border: 1px solid lightgray;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  place-items: center;
+  margin: 1rem auto;
+}
+
+.seat {
+  border: 1px solid lightgray;
+  height: 30px;
+  width: 30px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  user-select: none;
+  cursor: pointer;
+}
+.seat.occupied {
+  background-color: lightgray;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-row button {
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  text-decoration: underline;
+}
