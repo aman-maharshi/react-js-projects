@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import CartContext from "./CartContext"
@@ -11,6 +11,7 @@ function App() {
     const [showCartSidebar, setShowCartSidebar] = useState(false)
     const [cart, setCart] = useState([])
     const [cartTotalValue, setCartTotalValue] = useState(0)
+    const sidebarRef = useRef(null)
 
     useEffect(() => {
         calculateCartTotalValue()
@@ -64,6 +65,12 @@ function App() {
         setCartTotalValue(sum)
     }
 
+    function handleCloseMobileNav(e) {
+        if (sidebarRef.current && showCartSidebar && !sidebarRef.current.contains(e.target)) {
+            setShowCartSidebar(false)
+        }
+    }
+
     const contextObject = {
         cart,
         setCart,
@@ -98,7 +105,7 @@ function App() {
                     </Routes>
                 </BrowserRouter> */}
 
-                <Sidebar />
+                <Sidebar ref={sidebarRef} />
 
                 <div className="footer absolute w-full left-0 bottom-0 text-center p-4 text-zinc-400">
                     Designed and Coded by <a href="https://amanmaharshi.com" className="font-medium hover:text-zinc-500 ease-in-out duration-500">Aman Maharshi</a>
