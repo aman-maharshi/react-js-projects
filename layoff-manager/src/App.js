@@ -7,7 +7,7 @@ const App = () => {
     const [teams, setTeams] = useState(teamData)
 
     const handleSelectTeam = e => {
-        console.log(e.target.checked, e.target.name)
+        // console.log(e.target.checked, e.target.name)
         const updatedList = teams.map(item => {
             if (e.target.name === item.name) {
                 return {
@@ -54,7 +54,7 @@ const App = () => {
             {selectedCheck() && (
                 <>
                     <div className="flex gap-2 items-center mb-4">
-                        <h2 className="font-bold text-2xl text-slate-700">Layoffs</h2>
+                        <h2 className="font-bold text-2xl text-slate-700">Requirements</h2>
                         {totalLayoffs() > 0 && <div className="border border-gray-300 rounded-full w-10 bg-white text-center text-orange-500 font-bold">{totalLayoffs()}</div>}
                     </div>
                     <div className="grid grid-cols-3 gap-4">
