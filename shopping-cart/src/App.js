@@ -12,6 +12,7 @@ function App() {
     const [cart, setCart] = useState([])
     const [cartTotalValue, setCartTotalValue] = useState(0)
     const sidebarRef = useRef(null)
+    const sidebarToggleButtonRef = useRef(null)
 
     useEffect(() => {
         calculateCartTotalValue()
@@ -66,10 +67,16 @@ function App() {
     }
 
     function handleCloseMobileNav(e) {
-        if (sidebarRef.current && showCartSidebar && !sidebarRef.current.contains(e.target)) {
-            setShowCartSidebar(false)
+        if (sidebarRef.current && showCartSidebar && !sidebarRef.current.contains(e.target) && !sidebarToggleButtonRef.current.contains(e.target)) {
+            setShowCartSidebar(!showCartSidebar)
         }
     }
+    
+    useEffect(() => {
+        document.addEventListener("mousedown", handleCloseMobileNav)
+        return () => document.removeEventListener("mousedown", handleCloseMobileNav)
+    }, [showCartSidebar])
+    
 
     const contextObject = {
         cart,
@@ -87,7 +94,7 @@ function App() {
             <div>
                 <div className="md:px-8 p-4 flex items-center justify-between bg-white shadow-sm">
                     <h1 className="text-xl">Essentials</h1>
-                    <div onClick={() => setShowCartSidebar(!showCartSidebar)} className={`flex items-center gap-4 relative z-20 cursor-pointer select-none`}>
+                    <div ref={sidebarToggleButtonRef} onClick={() => setShowCartSidebar(!showCartSidebar)} className={`flex items-center gap-4 relative z-20 cursor-pointer select-none`}>
                         <span className="h-8 w-8 rounded-full flex items-center justify-center text-white bg-zinc-900">
                             {cart.length}
                         </span>
@@ -105,7 +112,7 @@ function App() {
                     </Routes>
                 </BrowserRouter> */}
 
-                <Sidebar ref={sidebarRef} />
+                <Sidebar sidebarRef={sidebarRef} />
 
                 <div className="footer absolute w-full left-0 bottom-0 text-center p-4 text-zinc-400">
                     Designed and Coded by <a href="https://amanmaharshi.com" className="font-medium hover:text-zinc-500 ease-in-out duration-500">Aman Maharshi</a>
