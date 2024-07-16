@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 body {
   margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+* {
+  font-family: "Lato", sans-serif;
 }
 
 .vc-preview-modal-container {
@@ -12,7 +18,7 @@ body {
   transform: translate(-50%, -50%);
   outline: none;
   border-radius: 1rem;
-  border: 1px solid lightgray;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   .vc-preview__row-one {
     background-color: #474747;
@@ -170,7 +176,7 @@ body {
     }
 
     .vc-preview__row-two__cta {
-      background-color: #E82C86;
+      background-color: #1658c0;
       color: white;
       font-weight: bold;
       width: 100%;
@@ -180,6 +186,7 @@ body {
       margin-top: 1rem;
       outline: none;
       border: none;
+      cursor: pointer;
 
       &:disabled {
         background-color: gray;

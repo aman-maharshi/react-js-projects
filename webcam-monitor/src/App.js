@@ -40,7 +40,6 @@ function App() {
     }
   }
 
-
   const handleCameraToggle = () => {
     if (mediaStream) {
       mediaStream.getTracks().forEach(track => {
@@ -107,10 +106,25 @@ function App() {
       const audioPermission = await navigator.permissions.query({ name: 'microphone' })
 
       if (cameraPermission.state === 'denied' || audioPermission.state === 'denied') {
-        alert('Please enable camera and microphone access to use video call feature.')
+        alert('Please enable camera and microphone access to use this feature')
       }
     }
     setLoadingStream(false)
+  }
+
+  const handleStopCapture = () => {
+    if (mediaStream) {
+      mediaStream.getTracks().forEach(track => {
+        track.stop()
+      })
+      setMediaStream(null)
+      cancelAnimationFrame(animationFrameId)
+      setAudioLevel(0)
+      setMuted(true)
+    } else {
+      getAudioVideoFeed()
+      setMuted(false)
+    }
   }
 
   useEffect(() => {
@@ -140,12 +154,6 @@ function App() {
     <div className='vc-preview-modal-container'>
       <div className="vc-preview__row-one">
         {loadingStream && <div className="vc-preview__loading">Loading...</div>}
-
-        {!mediaStream || muted ? (
-          <div className="audio-video-indicator">
-            {muted ? "Join with mic off" : "Join with cam off"}
-          </div>
-        ) : null}
 
         <div className="vc-preview__row-one__controls">
           <div></div>
@@ -190,18 +198,8 @@ function App() {
           <KeyboardArrowDownIcon className='down-arrow' />
         </div>
 
-        {/* <div className="vc-select-wrapper">
-          <select className='vc-select'>
-            <option value="Speaker 1">Speaker 1</option>
-            <option value="Speaker 2">Speaker 2</option>
-          </select>
-
-          <VolumeUpIcon className='function-icon' />
-          <KeyboardArrowDownIcon className='down-arrow' />
-        </div> */}
-
-        <button disabled={loadingStream} className="vc-preview__row-two__cta">
-          Join
+        <button disabled={loadingStream} onClick={handleStopCapture} className="vc-preview__row-two__cta">
+          {mediaStream ? 'Stop' : 'Start'} Capture
         </button>
       </div>
     </div>
