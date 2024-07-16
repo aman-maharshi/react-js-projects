@@ -1,0 +1,189 @@
+
+body {
+  margin: 0;
+}
+
+.vc-preview-modal-container {
+  position: absolute;
+  width: 410px;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  outline: none;
+  border-radius: 1rem;
+  border: 1px solid lightgray;
+
+  .vc-preview__row-one {
+    background-color: #474747;
+    position: relative;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    height: 240px;
+    overflow: hidden;
+
+    .vc-preview__loading {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      color: white;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .audio-video-indicator {
+      position: absolute;
+      z-index: 2;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(0,0,0,0.5);
+      border-radius: 5px;
+      padding: 5px 15px;
+      text-align: center;
+      color: white;
+      font-size: 14px;
+    }
+
+    .vc-preview__camera-feed {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+
+      video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .vc-preview__row-one__controls {
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+
+      .vc-preview__row-one__controls__center {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .vc-preview__video-toggle,
+      .vc-preview__audio-toggle {
+        height: 48px;
+        width: 48px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        background-color: rgba(0,0,0,0.5);
+        outline: none;
+        border: none;
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
+
+        &:hover {
+          background-color: rgba(0,0,0,0.7);
+        }
+
+        .MuiSvgIcon-root {
+          font-size: 30px;
+          z-index: 3;
+        }
+
+        .audio-level-indicator {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          z-index: 2;
+          width: 100%;
+          background-color: seagreen;
+          transition: height 0.2s ease;
+        }
+      }
+    }
+  }
+
+  .vc-preview__row-two {
+    padding: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+
+
+    .vc-select-wrapper {
+      position: relative;
+      display: flex;
+      margin-bottom: 1rem;
+  
+      .MuiSvgIcon-root.down-arrow {
+        position: absolute;
+        right: 5px;
+        top: 10px;
+        pointer-events: none;
+      }
+      .MuiSvgIcon-root.function-icon {
+        position: absolute;
+        left: 8px;
+        top: 10px;
+        pointer-events: none;
+        color: black;
+      }
+    }
+  
+    .vc-select {
+      flex: 1;
+      padding: 10px;
+      padding-left: 40px;
+      border: 1px solid #dbdbdb;
+      border-radius: 10px;
+      font-size: 14px;
+      outline: none;
+      -webkit-appearance: none;
+      color: black;
+      background-color: white;
+      transition: all 0.5s ease;
+      cursor: pointer;
+      
+      &:hover {
+        border: 1px solid rgb(162, 162, 162);
+      }
+    }
+
+    .vc-preview__row-two__cta {
+      background-color: #E82C86;
+      color: white;
+      font-weight: bold;
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
+      margin-top: 1rem;
+      outline: none;
+      border: none;
+
+      &:disabled {
+        background-color: gray;
+        cursor: default;
+      }
+    }
+  }
+}
