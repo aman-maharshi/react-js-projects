@@ -15,11 +15,36 @@ function App() {
   const [mediaStream, setMediaStream] = useState(null)
   const [muted, setMuted] = useState(false)
   const [audioLevel, setAudioLevel] = useState(0)
+  const [audioDevices, setAudioDevices] = useState([])
+  const [videoDevices, setVideoDevices] = useState([])
   const videoRef = useRef(null)
+
+  const getAudioDevices = async () => {
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices()
+      const audioDevices = devices.filter(device => device.kind === 'audioinput')
+      setAudioDevices(audioDevices)
+      console.log(audioDevices, "audio devices")
+    } catch (error) {
+      console.error('Error enumerating audio devices:', error)
+    }
+  }
+
+  const getVideoDevices = async () => {
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices()
+      const videoDevices = devices.filter(device => device.kind === 'videoinput')
+      setVideoDevices(videoDevices)
+    } catch (error) {
+      console.error('Error enumerating video devices:', error)
+    }
+  }
+
 
   const handleCameraToggle = () => {
     if (mediaStream) {
       mediaStream.getTracks().forEach(track => {
+        console.log(track, "track")
         track.stop()
       })
       setMediaStream(null)
@@ -68,7 +93,7 @@ function App() {
         let average = sum / bufferLength
 
         average = Math.max(0, Math.min(100, average))
-        console.log(average, "average audio level")
+        // console.log(average, "average audio level")
         setAudioLevel(average)
 
         animationFrameId = requestAnimationFrame(getAudioLevel)
@@ -89,6 +114,8 @@ function App() {
   }
 
   useEffect(() => {
+    getAudioDevices()
+    getVideoDevices()
     getAudioVideoFeed()
 
     // Clean up the camera stream when the component unmounts
@@ -112,7 +139,7 @@ function App() {
   return (
     <div className='vc-preview-modal-container'>
       <div className="vc-preview__row-one">
-      {loadingStream && <div className="vc-preview__loading">Loading...</div>}
+        {loadingStream && <div className="vc-preview__loading">Loading...</div>}
 
         {!mediaStream || muted ? (
           <div className="audio-video-indicator">
@@ -143,8 +170,9 @@ function App() {
       <div className="vc-preview__row-two">
         <div className="vc-select-wrapper">
           <select className='vc-select'>
-            <option value="Camera 1">Camera 1</option>
-            <option value="Camera 2">Camera 2</option>
+            {videoDevices?.map((device, index) => (
+              <option key={index} value={device.label}>{device.label}</option>
+            ))}
           </select>
 
           <VideocamOutlinedIcon className='function-icon' />
@@ -153,15 +181,16 @@ function App() {
 
         <div className="vc-select-wrapper">
           <select className='vc-select'>
-            <option value="Microphone 1">Microphone 1</option>
-            <option value="Microphone 2">Microphone 2</option>
+            {audioDevices?.map((device, index) => (
+              <option key={index} value={device.label}>{device.label}</option>
+            ))}
           </select>
 
           <MicOutlinedIcon className='function-icon' />
           <KeyboardArrowDownIcon className='down-arrow' />
         </div>
 
-        <div className="vc-select-wrapper">
+        {/* <div className="vc-select-wrapper">
           <select className='vc-select'>
             <option value="Speaker 1">Speaker 1</option>
             <option value="Speaker 2">Speaker 2</option>
@@ -169,7 +198,7 @@ function App() {
 
           <VolumeUpIcon className='function-icon' />
           <KeyboardArrowDownIcon className='down-arrow' />
-        </div>
+        </div> */}
 
         <button disabled={loadingStream} className="vc-preview__row-two__cta">
           Join
