@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import PermissionsModal from "./PermissionsModal"
 
 // MUI
 import MicOutlinedIcon from '@mui/icons-material/MicOutlined';
@@ -25,6 +26,8 @@ function App() {
   const [videoDevices, setVideoDevices] = useState([])
   const [audioAllowed, setAudioAllowed] = useState(false)
   const [videoAllowed, setVideoAllowed] = useState(false)
+  const [showPermissionsModal, setShowPermissionsModal] = useState(false)
+  const [permissionType, setPermissionType] = useState("audio")
   const videoRef = useRef(null)
 
   const stopMediaTracks = (stream) => {
@@ -42,6 +45,8 @@ function App() {
       } else {
         getVideoFeed(selectedVideoDevice)
       }
+    } else {
+      openPermissionsModal("video")
     }
   }
 
@@ -54,6 +59,8 @@ function App() {
         })
         setMuted(prev => !prev)
       }
+    } else {
+      openPermissionsModal("audio")
     }
   }
 
@@ -146,6 +153,11 @@ function App() {
     }
   }
 
+  const openPermissionsModal = (type) => {
+    setPermissionType(type)
+    setShowPermissionsModal(true)
+  }
+
   useEffect(() => {
     getAudioVideoDevices()
   }, [])
@@ -177,79 +189,85 @@ function App() {
     }
   }, [videoStream])
 
-
-
-
-
   return (
-    <div className='vc-preview-modal-container'>
-      <div className="vc-preview__row-one">
-        {loadingStream && <div className="vc-preview__loading">Loading...</div>}
+    <>
+      <div className='vc-preview-modal-container'>
+        <div className="vc-preview__row-one">
+          {loadingStream && <div className="vc-preview__loading">Loading...</div>}
 
-        <div className="vc-preview__row-one__controls">
-          <div></div>
-          <div className='vc-preview__row-one__controls__center'>
-            <button onClick={handleCameraToggle} className='vc-preview__video-toggle'>
-              {videoStream ? <VideocamOutlinedIcon /> : <VideocamOffOutlinedIcon />}
+          <div className="vc-preview__row-one__controls">
+            <div></div>
+            <div className='vc-preview__row-one__controls__center'>
+              <button onClick={handleCameraToggle} className='vc-preview__video-toggle'>
+                {videoStream ? <VideocamOutlinedIcon /> : <VideocamOffOutlinedIcon />}
 
-              {!videoAllowed ? <div className='info-icon'><InfoIcon /></div> : null}
-            </button>
-            <button onClick={handleMuteToggle} className='vc-preview__audio-toggle'>
-              <div className="audio-level-indicator" style={{ height: `${audioLevel}%` }}></div>
-              {muted || !audioAllowed ? <MicOffIcon /> : <MicOutlinedIcon />}
+                {!videoAllowed ? <div className='info-icon'><InfoIcon /></div> : null}
+              </button>
+              <button onClick={handleMuteToggle} className='vc-preview__audio-toggle'>
+                <div className="audio-level-indicator" style={{ height: `${audioLevel}%` }}></div>
+                {muted || !audioAllowed ? <MicOffIcon /> : <MicOutlinedIcon />}
 
-              {!audioAllowed ? <div className='info-icon'><InfoIcon /></div> : null}
-            </button>
+                {!audioAllowed ? <div className='info-icon'><InfoIcon /></div> : null}
+              </button>
+            </div>
+            <div></div>
           </div>
-          <div></div>
+
+          {videoStream && (
+            <div className="vc-preview__camera-feed">
+              <video ref={videoRef} autoPlay />
+            </div>
+          )}
         </div>
 
-        {videoStream && (
-          <div className="vc-preview__camera-feed">
-            <video ref={videoRef} autoPlay />
+        <div className="vc-preview__row-two">
+          <div className="vc-select-wrapper">
+            <select className='vc-select' onChange={e => setSelectedVideoDevice(e.target.value)}>
+              {videoDevices?.map((device, index) => (
+                <option key={index} value={device.deviceId}>{device.label}</option>
+              ))}
+              {!videoAllowed ? <option value="">Not allowed</option> : null}
+            </select>
+
+            <VideocamOutlinedIcon className='function-icon' />
+            <KeyboardArrowDownIcon className='down-arrow' />
           </div>
-        )}
-      </div>
 
-      <div className="vc-preview__row-two">
-        <div className="vc-select-wrapper">
-          <select className='vc-select' onChange={e => setSelectedVideoDevice(e.target.value)}>
-            {videoDevices?.map((device, index) => (
-              <option key={index} value={device.deviceId}>{device.label}</option>
-            ))}
-            {!videoAllowed ? <option value="">Not allowed</option> : null}
-          </select>
+          <div className="vc-select-wrapper">
+            <select className='vc-select' onChange={e => setSelectedAudioDevice(e.target.value)}>
+              {audioDevices?.map((device, index) => (
+                <option key={index} value={device.deviceId}>{device.label}</option>
+              ))}
+              {!audioAllowed ? <option value="">Not allowed</option> : null}
+            </select>
 
-          <VideocamOutlinedIcon className='function-icon' />
-          <KeyboardArrowDownIcon className='down-arrow' />
-        </div>
+            <MicOutlinedIcon className='function-icon' />
+            <KeyboardArrowDownIcon className='down-arrow' />
+          </div>
 
-        <div className="vc-select-wrapper">
-          <select className='vc-select' onChange={e => setSelectedAudioDevice(e.target.value)}>
-            {audioDevices?.map((device, index) => (
-              <option key={index} value={device.deviceId}>{device.label}</option>
-            ))}
-            {!audioAllowed ? <option value="">Not allowed</option> : null}
-          </select>
+          <div className="vc-select-wrapper">
+            <select className='vc-select' onChange={e => setSelectedOutputAudioDevice(e.target.value)}>
+              {outputAudioDevices?.map((device, index) => (
+                <option key={index} value={device.deviceId}>{device.label}</option>
+              ))}
+              {!audioAllowed ? <option value="">Not allowed</option> : null}
+            </select>
 
-          <MicOutlinedIcon className='function-icon' />
-          <KeyboardArrowDownIcon className='down-arrow' />
-        </div>
-
-        <div className="vc-select-wrapper">
-          <select className='vc-select' onChange={e => setSelectedOutputAudioDevice(e.target.value)}>
-            {outputAudioDevices?.map((device, index) => (
-              <option key={index} value={device.deviceId}>{device.label}</option>
-            ))}
-            {!audioAllowed ? <option value="">Not allowed</option> : null}
-          </select>
-
-          <VolumeUpIcon className='function-icon' />
-          <KeyboardArrowDownIcon className='down-arrow' />
+            <VolumeUpIcon className='function-icon' />
+            <KeyboardArrowDownIcon className='down-arrow' />
+          </div>
         </div>
       </div>
-    </div>
-  );
+      
+      {showPermissionsModal && (
+        <PermissionsModal
+          open={showPermissionsModal}
+          handleClose={() => setShowPermissionsModal(false)}
+          btnType={permissionType}
+        />
+      )}
+    </>
+  )
 }
 
 export default App;
