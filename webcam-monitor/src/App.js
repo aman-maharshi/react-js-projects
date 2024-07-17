@@ -7,66 +7,107 @@ import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import VideocamOffOutlinedIcon from '@mui/icons-material/VideocamOffOutlined';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import InfoIcon from '@mui/icons-material/Info';
 
 let animationFrameId
 
 function App() {
-  const [loadingStream, setLoadingStream] = useState(true)
-  const [mediaStream, setMediaStream] = useState(null)
+  const [loadingStream, setLoadingStream] = useState(false)
+  const [audioStream, setAudioStream] = useState(null)
+  const [videoStream, setVideoStream] = useState(null)
   const [muted, setMuted] = useState(false)
-  const [audioLevel, setAudioLevel] = useState(0)
-  const [audioDevices, setAudioDevices] = useState([])
+  const [audioLevel, setAudioLevel] = useState(0) // INPUT
+  const [audioDevices, setAudioDevices] = useState([]) // INPUT
+  const [outputAudioDevices, setOutputAudioDevices] = useState([]) // OUTPUT
+  const [selectedAudioDevice, setSelectedAudioDevice] = useState(null)
+  const [selectedVideoDevice, setSelectedVideoDevice] = useState(null)
+  const [selectedOutputAudioDevice, setSelectedOutputAudioDevice] = useState(null)
   const [videoDevices, setVideoDevices] = useState([])
+  const [audioAllowed, setAudioAllowed] = useState(false)
+  const [videoAllowed, setVideoAllowed] = useState(false)
   const videoRef = useRef(null)
 
-  const getAudioDevices = async () => {
-    try {
-      const devices = await navigator.mediaDevices.enumerateDevices()
-      const audioDevices = devices.filter(device => device.kind === 'audioinput')
-      setAudioDevices(audioDevices)
-      console.log(audioDevices, "audio devices")
-    } catch (error) {
-      console.error('Error enumerating audio devices:', error)
-    }
-  }
-
-  const getVideoDevices = async () => {
-    try {
-      const devices = await navigator.mediaDevices.enumerateDevices()
-      const videoDevices = devices.filter(device => device.kind === 'videoinput')
-      setVideoDevices(videoDevices)
-    } catch (error) {
-      console.error('Error enumerating video devices:', error)
-    }
+  const stopMediaTracks = (stream) => {
+    stream.getTracks().forEach(track => {
+      console.log(`stopping track: ${track.kind} - ${track.label}`)
+      track.stop()
+    })
   }
 
   const handleCameraToggle = () => {
-    if (mediaStream) {
-      mediaStream.getTracks().forEach(track => {
-        console.log(track, "track")
-        track.stop()
-      })
-      setMediaStream(null)
-    } else {
-      getAudioVideoFeed()
+    if (videoAllowed) {
+      if (videoStream) {
+        stopMediaTracks(videoStream)
+        setVideoStream(null)
+      } else {
+        getVideoFeed(selectedVideoDevice)
+      }
     }
   }
 
   const handleMuteToggle = () => {
-    if (mediaStream) {
-      const audioTracks = mediaStream.getAudioTracks()
-      audioTracks.forEach(track => {
-        track.enabled = !track.enabled
-      })
-      setMuted(!muted)
+    if (audioAllowed) {
+      if (audioStream) {
+        const audioTracks = audioStream.getAudioTracks()
+        audioTracks.forEach(track => {
+          track.enabled = !track.enabled
+        })
+        setMuted(prev => !prev)
+      }
     }
   }
 
-  const getAudioVideoFeed = async () => {
+  const getAudioVideoDevices = async () => {
     setLoadingStream(true)
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-      setMediaStream(stream)
+      const cameraPermission = await navigator.permissions.query({ name: 'camera' })
+      const microphonePermission = await navigator.permissions.query({ name: 'microphone' })
+      const devices = await navigator.mediaDevices.enumerateDevices()
+      const audioDevicesList = devices.filter(device => device.kind === 'audioinput')
+      const videoDevicesList = devices.filter(device => device.kind === 'videoinput')
+      const outputAudioDevicesList = devices.filter(device => device.kind === 'audiooutput')
+
+      setOutputAudioDevices(outputAudioDevicesList)
+      setSelectedOutputAudioDevice(outputAudioDevicesList[0]?.deviceId)
+
+      if (cameraPermission.state === 'granted') {
+        setVideoAllowed(true)
+        setVideoDevices(videoDevicesList)
+        setSelectedVideoDevice(videoDevicesList[0]?.deviceId)
+      }
+
+      if (microphonePermission.state === 'granted') {
+        setAudioAllowed(true)
+        setAudioDevices(audioDevicesList)
+        setSelectedAudioDevice(audioDevicesList[0]?.deviceId)
+      }
+
+      if (microphonePermission.state === 'denied' || cameraPermission.state === 'denied') {
+        setLoadingStream(false)
+        alert("Please allow camera and microphone permissions to use this feature")
+      }
+
+
+    } catch (error) {
+      console.error('Error accessing audio/video devices:', error)
+    }
+  }
+
+  const getVideoFeed = async (videoDeviceId) => {
+    setLoadingStream(true)
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: videoDeviceId } })
+      setVideoStream(stream)
+    } catch (error) {
+      console.error('Error accessing camera:', error)
+    }
+    setLoadingStream(false)
+  }
+
+  const getAudioFeed = async (audioDeviceId) => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: audioDeviceId } })
+      setAudioStream(stream)
 
       // Create an AudioContext and an AnalyserNode
       const audioContext = new (window.AudioContext || window.webkitAudioContext)()
@@ -92,7 +133,7 @@ function App() {
         let average = sum / bufferLength
 
         average = Math.max(0, Math.min(100, average))
-        // console.log(average, "average audio level")
+        console.log(average, "average audio level")
         setAudioLevel(average)
 
         animationFrameId = requestAnimationFrame(getAudioLevel)
@@ -101,53 +142,43 @@ function App() {
       getAudioLevel()
 
     } catch (error) {
-      console.error('Error accessing camera:', error)
-      const cameraPermission = await navigator.permissions.query({ name: 'camera' })
-      const audioPermission = await navigator.permissions.query({ name: 'microphone' })
-
-      if (cameraPermission.state === 'denied' || audioPermission.state === 'denied') {
-        alert('Please enable camera and microphone access to use this feature')
-      }
-    }
-    setLoadingStream(false)
-  }
-
-  const handleStopCapture = () => {
-    if (mediaStream) {
-      mediaStream.getTracks().forEach(track => {
-        track.stop()
-      })
-      setMediaStream(null)
-      cancelAnimationFrame(animationFrameId)
-      setAudioLevel(0)
-      setMuted(true)
-    } else {
-      getAudioVideoFeed()
-      setMuted(false)
+      console.error('Error accessing microphone:', error)
     }
   }
 
   useEffect(() => {
-    getAudioDevices()
-    getVideoDevices()
-    getAudioVideoFeed()
-
-    // Clean up the camera stream when the component unmounts
-    return () => {
-      if (mediaStream) {
-        mediaStream.getTracks().forEach(track => {
-          track.stop()
-        })
-      }
-    }
+    getAudioVideoDevices()
   }, [])
 
   useEffect(() => {
-    if (videoRef.current && mediaStream) {
-      videoRef.current.srcObject = mediaStream
+    if (selectedAudioDevice && selectedVideoDevice) {
+      getAudioFeed(selectedAudioDevice)
+    }
+    if (selectedVideoDevice) {
+      getVideoFeed(selectedVideoDevice)
+    }
+
+    // Clean up the camera stream when the component unmounts
+    return () => {
+      cancelAnimationFrame(animationFrameId)
+      if (audioStream) {
+        stopMediaTracks(audioStream)
+      }
+      if (videoStream) {
+        stopMediaTracks(videoStream)
+      }
+    }
+  }, [selectedAudioDevice, selectedVideoDevice])
+
+  useEffect(() => {
+    if (videoRef.current && videoStream) {
+      videoRef.current.srcObject = videoStream
       videoRef.current.play().catch(error => console.error("Error playing the video stream:", error))
     }
-  }, [mediaStream])
+  }, [videoStream])
+
+
+
 
 
   return (
@@ -159,28 +190,34 @@ function App() {
           <div></div>
           <div className='vc-preview__row-one__controls__center'>
             <button onClick={handleCameraToggle} className='vc-preview__video-toggle'>
-              {mediaStream ? <VideocamOutlinedIcon /> : <VideocamOffOutlinedIcon />}
+              {videoStream ? <VideocamOutlinedIcon /> : <VideocamOffOutlinedIcon />}
+
+              {!videoAllowed ? <div className='info-icon'><InfoIcon /></div> : null}
             </button>
             <button onClick={handleMuteToggle} className='vc-preview__audio-toggle'>
               <div className="audio-level-indicator" style={{ height: `${audioLevel}%` }}></div>
-              {muted ? <MicOffIcon /> : <MicOutlinedIcon />}
+              {muted || !audioAllowed ? <MicOffIcon /> : <MicOutlinedIcon />}
+
+              {!audioAllowed ? <div className='info-icon'><InfoIcon /></div> : null}
             </button>
           </div>
           <div></div>
         </div>
 
-        {mediaStream && (
+        {videoStream && (
           <div className="vc-preview__camera-feed">
             <video ref={videoRef} autoPlay />
           </div>
         )}
       </div>
+
       <div className="vc-preview__row-two">
         <div className="vc-select-wrapper">
-          <select className='vc-select'>
+          <select className='vc-select' onChange={e => setSelectedVideoDevice(e.target.value)}>
             {videoDevices?.map((device, index) => (
-              <option key={index} value={device.label}>{device.label}</option>
+              <option key={index} value={device.deviceId}>{device.label}</option>
             ))}
+            {!videoAllowed ? <option value="">Not allowed</option> : null}
           </select>
 
           <VideocamOutlinedIcon className='function-icon' />
@@ -188,19 +225,28 @@ function App() {
         </div>
 
         <div className="vc-select-wrapper">
-          <select className='vc-select'>
+          <select className='vc-select' onChange={e => setSelectedAudioDevice(e.target.value)}>
             {audioDevices?.map((device, index) => (
-              <option key={index} value={device.label}>{device.label}</option>
+              <option key={index} value={device.deviceId}>{device.label}</option>
             ))}
+            {!audioAllowed ? <option value="">Not allowed</option> : null}
           </select>
 
           <MicOutlinedIcon className='function-icon' />
           <KeyboardArrowDownIcon className='down-arrow' />
         </div>
 
-        <button disabled={loadingStream} onClick={handleStopCapture} className="vc-preview__row-two__cta">
-          {mediaStream ? 'Stop' : 'Start'} Capture
-        </button>
+        <div className="vc-select-wrapper">
+          <select className='vc-select' onChange={e => setSelectedOutputAudioDevice(e.target.value)}>
+            {outputAudioDevices?.map((device, index) => (
+              <option key={index} value={device.deviceId}>{device.label}</option>
+            ))}
+            {!audioAllowed ? <option value="">Not allowed</option> : null}
+          </select>
+
+          <VolumeUpIcon className='function-icon' />
+          <KeyboardArrowDownIcon className='down-arrow' />
+        </div>
       </div>
     </div>
   );

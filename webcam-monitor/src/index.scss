@@ -93,7 +93,7 @@ body {
 
       .vc-preview__video-toggle,
       .vc-preview__audio-toggle {
-        cursor: pointer;
+        position: relative;
         height: 48px;
         width: 48px;
         border-radius: 10px;
@@ -106,7 +106,13 @@ body {
         border: none;
         transition: all 0.5s ease;
         position: relative;
-        overflow: hidden;
+
+        .info-icon {
+          position: absolute;
+          color: #e7cc00;
+          top: -15px;
+          right: -15px;
+        }
 
         &:hover {
           background-color: rgba(0,0,0,0.7);
@@ -125,6 +131,7 @@ body {
           width: 100%;
           background-color: seagreen;
           transition: height 0.2s ease;
+          border-radius: 10px;
         }
       }
     }
@@ -150,7 +157,7 @@ body {
       .MuiSvgIcon-root.function-icon {
         position: absolute;
         left: 8px;
-        top: 6px;
+        top: 10px;
         pointer-events: none;
         color: black;
       }
@@ -176,7 +183,7 @@ body {
     }
 
     .vc-preview__row-two__cta {
-      background-color: #1658c0;
+      background-color: #E82C86;
       color: white;
       font-weight: bold;
       width: 100%;
@@ -186,7 +193,6 @@ body {
       margin-top: 1rem;
       outline: none;
       border: none;
-      cursor: pointer;
 
       &:disabled {
         background-color: gray;
