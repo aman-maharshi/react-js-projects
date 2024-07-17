@@ -106,12 +106,14 @@ body {
         border: none;
         transition: all 0.5s ease;
         position: relative;
+        cursor: pointer;
 
         .info-icon {
           position: absolute;
           color: #e7cc00;
           top: -15px;
           right: -15px;
+          cursor: pointer;
         }
 
         &:hover {

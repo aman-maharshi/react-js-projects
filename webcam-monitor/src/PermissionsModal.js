@@ -18,7 +18,7 @@ function AudioVideoSetupModal({ open, handleClose, btnType }) {
             <img src="/audio-video-modal-img.svg" alt="graphic" />
           </div>
           <div>
-            <div className='modal-title-one'>Artium is blocked from using your {btnType === "audio" ? "microphone" : "camera"}</div>
+            <div className='modal-title-one'>We're blocked from using your {btnType === "audio" ? "microphone" : "camera"}</div>
             <ol className='modal-list'>
               <li className='modal-title-two'>Click the <img src="/browser-controls.svg" alt="controls" /> page info icon in your browser’s address bar</li>
               <li className='modal-title-two'>Turn On {btnType === "audio" ? "Microphone" : "Camera"}</li>
